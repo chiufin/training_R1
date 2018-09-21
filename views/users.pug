@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1 User list
+  button Create User
+  ul 
+    each val in ['ken', 'wilson', 'rachel', 'jake', 'stacy']
+        li= val
+            br
+            button Modify
+            button Delete
