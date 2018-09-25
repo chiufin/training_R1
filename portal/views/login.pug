@@ -1,14 +1,18 @@
 extends layout
 
 block content
-  a(href='/') &lt;Back
-  h1 Login
-  form(method='POST' action='/login')
-    div
-      label(for='account') Account
-      input(type='input' id='account' placeholder='account')
-    div
-      label(for='password') Password
-      input(type='password' id='password' placeholder='password')
-    div
-      button(type='submit') Enter
+  a(href='/') &lt;Index
+  if ifLogin
+    h1 Welcome, What is your main focus for today?
+    a(href='/users') user management 
+  else 
+    h1 Login
+    form(method='POST' action='/login/post')
+      div
+        label(for='account') Account
+        input(type='input' id='account' placeholder='account' name='account')
+      div
+        label(for='password') Password
+        input(type='password' id='password' placeholder='password' name='password')
+      div
+        button(type='submit') Log in
