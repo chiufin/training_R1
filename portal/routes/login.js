@@ -15,16 +15,17 @@ router.post('/post', function(req, res){
     return res.redirect('/login')
   }else{
     //set cookie
-    res.cookie('account', req.body.account, { path: '/', signed: true, maxAge:60000})
-    res.cookie('password', req.body.password, { path: '/', signed: true, maxAge:60000})
+    res.cookie('account', req.body.account, { path: '/', signed: true})
+    res.cookie('password', req.body.password, { path: '/', signed: true})
     return res.redirect('/users')
   }
 })
 
 //logout
 router.get('/logout', function(req, res){
-  res.clearCookie('account',{path:'/'});
-  res.clearCookie('password',{path:'/'});
+  res.clearCookie('account', {path:'/'});
+  res.clearCookie('password', {path:'/'});
+  return res.redirect('/login')
 })
 
 

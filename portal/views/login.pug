@@ -5,6 +5,8 @@ block content
   if ifLogin
     h1 Welcome, What is your main focus for today?
     a(href='/users') user management 
+    br
+    a(href='/login/logout') Log out
   else 
     h1 Login
     form(method='POST' action='/login/post')
