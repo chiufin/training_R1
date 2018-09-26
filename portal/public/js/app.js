@@ -1,11 +1,17 @@
 $( document ).ready(function() {
 
     $("#createUser").click(function() {
-        console.log('show panel')
-        
+        $("#createUserModal").css({ display: 'block' })
     });
 
     $("#closeUserPanel").click(function() {
-        
+        $("#createUserModal").css({ display: 'none' })
     });
+
+    window.onclick = function(event) {
+        console.log(event.target)
+        // if (event.target == modal) {
+        //     modal.style.display = "none";
+        // }
+    }
 });

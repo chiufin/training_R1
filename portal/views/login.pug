@@ -9,11 +9,11 @@ block content
   else 
     h1 Login
     form(method='POST' action='/login/post')
+      div(class="mdl-textfield mdl-js-textfield")
+        label(for='account' class="mdl-textfield__label") Account
+        input(type='input' id='account' placeholder='account' name='account' class="mdl-textfield__input")
       div
-        label(for='account') Account
-        input(type='input' id='account' placeholder='account' name='account')
+        label(for='password' class="mdl-textfield__label") Password
+        input(type='password' id='password' placeholder='password' name='password' class="mdl-textfield__input")
       div
-        label(for='password') Password
-        input(type='password' id='password' placeholder='password' name='password')
-      div
-        button(type='submit') Log in
+        button(type='submit' class='mdl-button mdl-js-button') Log in
