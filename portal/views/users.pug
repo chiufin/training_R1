@@ -1,11 +1,24 @@
 extends layout
 
+mixin createUserModal
+    div#createUserModal
+      button#closeUserPanel Close
+      h1 Create User
+      form(method='POST' action='/users/post')
+          div
+              label(for='user') User Name
+              input(type='input' id='user' placeholder='user name' name='user')
+          div
+              button(type='submit') Update
+
+
 block content
   a(href='/login/logout') Log out
+  +createUserModal
   h1 User list
-  button Create User
+  button#createUser Create User
   ul 
-    each val in ['ken', 'wilson', 'rachel', 'jake', 'stacy']
+    each val in users
         li= val
             br
             button Modify
