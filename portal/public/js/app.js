@@ -9,9 +9,8 @@ $( document ).ready(function() {
     });
 
     window.onclick = function(event) {
-        console.log(event.target)
-        // if (event.target == modal) {
-        //     modal.style.display = "none";
-        // }
+        if (event.target.id == 'createUserModal') {
+            $("#createUserModal").css({ display: 'none' })
+        }
     }
 });
