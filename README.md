@@ -46,3 +46,4 @@ implement file upload/downlod function with jquery/nodejs
 
 ### Useful material 
 - [Character Entity Reference Chart](https://dev.w3.org/html5/html-author/charref)
+- [DB schema - data type](http://www.tutorialspoint.com/mysql/mysql-data-types.htm)
