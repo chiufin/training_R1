@@ -1,20 +1,28 @@
 extends layout
 
 mixin nav
-    p #{userName}
-    a(href='/login/logout') Log out
+    header(class="mdl-layout__header")
+        div(class="mdl-layout__header-row")
+            span(class="mdl-layout-title") Training R1
+
+            div(class="mdl-layout-spacer")
+            nav(class="mdl-navigation")
+                span User Name
+                a(class="mdl-navigation__link" href="/login/logout") Log out
+
 
 mixin createUserModal
     div#createUserModal
-      button#closeUserPanel(class="mdl-button mdl-js-button mdl-button--icon") 
-        i(class="material-icons") clear
-      h1 Create User
-      form(method='POST' action='/users/post')
-          div(class="mdl-textfield mdl-js-textfield")
-            label(for='user' class="mdl-textfield__label") User Name
-            input(type='input' id='user' name='user' class="mdl-textfield__input")
-          div
-              button(type='submit' class="mdl-button mdl-js-button") Create
+      div(class='modal_content')
+        h1 Create User
+        form(method='POST' action='/users/post')
+            div(class="mdl-textfield mdl-js-textfield")
+                label(for='user' class="mdl-textfield__label") User Name
+                input(type='input' id='user' name='user' class="mdl-textfield__input")
+            div
+                button(type='submit' class="mdl-button mdl-js-button") Create
+        button#closeUserPanel(class="modal_close mdl-button mdl-js-button mdl-button--icon") 
+            i(class="material-icons") clear
 
 
 block content

@@ -1,13 +1,3 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
-
-
 #createUserModal {
   display: none;
   position: absolute;
@@ -16,6 +6,19 @@ a {
   z-index: 1;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.7);
 }
 
+.modal_content{
+  position: relative;
+  margin: auto;
+  width: 500px;
+  height: 400px;
+  background: white;
+}
+
+.modal_close{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
