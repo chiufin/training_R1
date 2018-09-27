@@ -6,14 +6,15 @@ mixin nav
 
 mixin createUserModal
     div#createUserModal
-      button#closeUserPanel(class="mdl-button mdl-js-button") Close
+      button#closeUserPanel(class="mdl-button mdl-js-button mdl-button--icon") 
+        i(class="material-icons") clear
       h1 Create User
       form(method='POST' action='/users/post')
           div(class="mdl-textfield mdl-js-textfield")
             label(for='user' class="mdl-textfield__label") User Name
             input(type='input' id='user' name='user' class="mdl-textfield__input")
           div
-              button(type='submit' class="mdl-button mdl-js-button") Update
+              button(type='submit' class="mdl-button mdl-js-button") Create
 
 
 block content
@@ -24,6 +25,9 @@ block content
   ul(class="mdl-list")
     each val in users
         li(class="mdl-list__item")= val
-            br
-            button(class="mdl-button mdl-js-button") Modify
-            button(class="mdl-button mdl-js-button") Delete
+            button(class="mdl-button mdl-js-button mdl-button--icon") 
+                div(id="modify_user" class="icon material-icons") edit
+                div(class="mdl-tooltip" data-mdl-for="modify_user") edit
+            button(class="mdl-button mdl-js-button mdl-button--icon") 
+                div(id="delete_user" class="icon material-icons") delete
+                div(class="mdl-tooltip" data-mdl-for="delete_user") delete
