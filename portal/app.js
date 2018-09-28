@@ -8,6 +8,25 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login')
 
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'password',
+  database: 'users'
+});
+
+connection.connect();
+
+connection.query('SELECT * FROM cats', function(err, rows, fields) {
+  if (err) throw err;
+  console.log('The solution is: ', rows[0]);
+});
+
+connection.end();
+
+
 var app = express();
 
 // view engine setup
