@@ -7,24 +7,25 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login')
+var apiRouter = require('./routes/api')
 
-var mysql = require('mysql');
+// var mysql = require('mysql');
 
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'password',
-  database: 'users'
-});
+// var connection = mysql.createConnection({
+//   host     : 'localhost',
+//   user     : 'root',
+//   password : 'password',
+//   database: 'users'
+// });
 
-connection.connect();
+// connection.connect();
 
-connection.query('SELECT * FROM cats', function(err, rows, fields) {
-  if (err) throw err;
-  console.log('The solution is: ', rows[0]);
-});
+// connection.query('SELECT * FROM cats', function(err, rows, fields) {
+//   if (err) throw err;
+//   console.log('The solution is: ', rows[0]);
+// });
 
-connection.end();
+// connection.end();
 
 
 var app = express();
@@ -44,6 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/users', usersRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
