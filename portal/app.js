@@ -10,25 +10,19 @@ var loginRouter = require('./routes/login')
 var apiRouter = require('./routes/api')
 
 // var mysql = require('mysql');
+// var myConnection  = require('express-myconnection')
 
-// var connection = mysql.createConnection({
+// var dbOptions = {
 //   host     : 'localhost',
 //   user     : 'root',
 //   password : 'password',
 //   database: 'users'
-// });
-
-// connection.connect();
-
-// connection.query('SELECT * FROM cats', function(err, rows, fields) {
-//   if (err) throw err;
-//   console.log('The solution is: ', rows[0]);
-// });
-
-// connection.end();
-
+// }
 
 var app = express();
+
+
+// app.use(myConnection(mysql, dbOptions, 'pool'))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

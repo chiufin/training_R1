@@ -20,6 +20,12 @@ router.get('/logout', function(req, res){
   return res.redirect('/login')
 })
 
+//create user
+router.post('/users', function(req, res){
+  console.log(req.body.email)
+  console.log(req.body.password)
+  return res.redirect('/users')
+})
 
 
 module.exports = router;
