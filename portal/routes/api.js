@@ -27,5 +27,17 @@ router.post('/users', function(req, res){
   return res.redirect('/users')
 })
 
+//update user
+router.put('/users/(:id)', function(req, res){
+  console.log(req.body.email)
+  console.log(req.body.password)
+  return res.redirect('/users')
+})
+
+//delete user
+router.delete('/users/(:id)', function(req, res){
+  console.log(req.params.id)
+})
+
 
 module.exports = router;

@@ -21,7 +21,7 @@ mixin createUserModal
                 input(type='input' id='user' name='email' class="mdl-textfield__input")
             div(class="mdl-textfield mdl-js-textfield")
                 label(for='password' class="mdl-textfield__label") Password
-                input(type='password' id='user' name='password' class="mdl-textfield__input")
+                input(type='password' id='password' name='password' class="mdl-textfield__input")
             div
                 button(type='submit' class="mdl-button mdl-js-button") Create
         button#closeUserPanel(class="modal_close mdl-button mdl-js-button mdl-button--icon") 
@@ -31,14 +31,15 @@ mixin createUserModal
 block content
   +header
   +createUserModal
-  h1 User list
-  button#createUser(class="mdl-button mdl-js-button") Create User
-  ul(class="mdl-list")
-    each val, i in users
-        li(class="mdl-list__item")= val
-            button(class="mdl-button mdl-js-button mdl-button--icon") 
-                div(id="modify_user"+i class="icon material-icons") edit
-                div(class="mdl-tooltip" data-mdl-for="modify_user"+i) edit
-            button(class="mdl-button mdl-js-button mdl-button--icon") 
-                div(id="delete_user"+i class="icon material-icons") delete
-                div(class="mdl-tooltip" data-mdl-for="delete_user"+i) delete
+  div#users
+    h1 User list
+    button#createUser(class="mdl-button mdl-js-button") Create User
+    ul(class="mdl-list")
+        each val, i in users
+            li(class="mdl-list__item")= val
+                button(class="edit mdl-button mdl-js-button mdl-button--icon") 
+                    div(id="modify_user"+i class="icon material-icons") edit
+                    div(class="mdl-tooltip" data-mdl-for="modify_user"+i) edit
+                button(class="delete mdl-button mdl-js-button mdl-button--icon") 
+                    div(id="delete_user"+i class="icon material-icons") delete
+                    div(class="mdl-tooltip" data-mdl-for="delete_user"+i) delete

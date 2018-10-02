@@ -1,5 +1,7 @@
 $( document ).ready(function() {
 
+
+    //modal
     $("#createUser").click(function() {
         $("#createUserModal").css({ display: 'block' })
     });
@@ -13,4 +15,10 @@ $( document ).ready(function() {
             $("#createUserModal").css({ display: 'none' })
         }
     }
+
+
+    //create
+    $("#users .delete").click(function() {
+        console.log('cancel')
+    });
 });
