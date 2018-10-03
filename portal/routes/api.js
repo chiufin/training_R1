@@ -27,11 +27,17 @@ router.post('/users', function(req, res){
   return res.redirect('/users')
 })
 
-//update user
+//get certain user
+router.get('users/(:id)', function(req, res){
+  console.log(req.params.id)
+  res.json({ message: `Successfully get user id: ${req.params.id}` });
+})
+
+//update certain user
 router.put('/users/(:id)', function(req, res){
   console.log(req.body.email)
   console.log(req.body.password)
-  return res.redirect('/users')
+  res.json({ message: `Successfully updated ${req.params.id}` });
 })
 
 //delete user
