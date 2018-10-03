@@ -37,6 +37,7 @@ router.put('/users/(:id)', function(req, res){
 //delete user
 router.delete('/users/(:id)', function(req, res){
   console.log(req.params.id)
+  res.json({ message: `Successfully deleted ${req.params.id}` });
 })
 
 

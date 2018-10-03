@@ -19,6 +19,13 @@ $( document ).ready(function() {
 
     //create
     $("#users .delete").click(function() {
-        console.log('cancel')
+        var index = $("#users .delete").index(this)
+        $.ajax({
+            method: "DELETE",
+            url: `api/users/${index}`
+        })
+        .done(function( msg ) {
+            alert( "Data Saved: " + msg.message );
+        });
     });
 });
