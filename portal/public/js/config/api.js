@@ -9,7 +9,13 @@ var api = {
         })
         .done(callback);
     },
-    createUser: function(){},
+    createUser: function(callback){
+        $.ajax({
+            type: "POST",
+            url: `api/users`
+        })
+        .done(callback);
+    },
     updateUser: function(payload, callback){
         $.ajax({
             type: "PUT",

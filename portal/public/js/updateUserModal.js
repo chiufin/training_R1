@@ -3,6 +3,17 @@ $( document ).ready(function() {
     $("#users .edit").click(function() {
         $("#updateUserModal").css({ display: 'block' })
         var index = $("#users .edit").index(this)
+        $("#updateUserModal").data(index)
+
+        var payload = { id: index }
+        var callback = function( res ) {
+            $("#update_user_email").val(res.email)
+            $("#update_user_password").val(res.password)
+        }
+        api.getUser(payload, callback)
+    });
+
+    $("#updateUserBtn").click(function() {
         var payload = { id: index }
         var callback = function( res ) {
             $("#update_user_email").val(res.email)
@@ -23,15 +34,24 @@ $( document ).ready(function() {
 
 
 
+    // var mvc = {
+    //     model: {
+    //         users: [
 
-    var modal = {
-        showModal: function(){
+    //         ]
+    //     },
+    //     view: {},
+    //     controller: {}
+    // }
 
-        },
-        closeModal: function(){
+    // var modal = {
+    //     showModal: function(){
 
-        }
-    }
+    //     },
+    //     closeModal: function(){
+
+    //     }
+    // }
 
 
 

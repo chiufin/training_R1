@@ -24,7 +24,7 @@ router.get('/logout', function(req, res){
 router.post('/users', function(req, res){
   console.log(req.body.email)
   console.log(req.body.password)
-  return res.redirect('/users')
+  res.json({ message: 'successfully' })
 })
 
 //get certain user
