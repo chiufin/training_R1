@@ -14,7 +14,11 @@ open [ip]:3000
 . docker-machine.sh
 ```
 
-
+## Mysql
+enter in mysql
+```
+docker exec -it training_r1_db_1 mysql -uroot -p
+```
 
 Objective:
 Training to get familiar with JQuery/ExpressJS/Pug/Docker
@@ -68,3 +72,5 @@ implement file upload/downlod function with jquery/nodejs
 
 ### Problem tackling
 - [MySQL version 8 problem](https://o7planning.org/en/11959/connecting-to-mysql-database-using-nodejs)
+- [Clear docker compose volumes](https://github.com/docker-library/mysql/issues/51)
+  docker-compose does extra work to preserve volumes between runs (thus preserving the database); you may want to try `docker-compose rm -v` to delete everything and try starting it up again.

@@ -3,7 +3,8 @@ services:
   db:
     build: ./mysql
     environment:
-      MYSQL_ROOT_PASSWORD: example
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: training_r1 
   web:
     build: ./portal
     ports:
