@@ -1,5 +1,21 @@
 # Traning R1 - warm up
 
+## Run
+```
+cd portal
+docker build -t training-r1 .
+docker run -p 3000:3000 training-r1 .
+docker-machine ip default
+open [ip]:3000
+```
+
+## Docker-machine default reset
+```
+. docker-machine.sh
+```
+
+
+
 Objective:
 Training to get familiar with JQuery/ExpressJS/Pug/Docker
 
