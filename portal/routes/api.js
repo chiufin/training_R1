@@ -28,9 +28,8 @@ router.post('/users', function(req, res){
 })
 
 //get certain user
-router.get('users/(:id)', function(req, res){
-  console.log(req.params.id)
-  res.json({ message: `Successfully get user id: ${req.params.id}` });
+router.get('/users/(:id)', function(req, res){
+  res.json({ email: 'staccc.chen@innovasolutions.com', password: '12345' });
 })
 
 //update certain user
