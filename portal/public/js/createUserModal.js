@@ -6,7 +6,7 @@ $( document ).ready(function() {
         $("#createUserModal").css({ display: 'block' })
     });
 
-    $("#closeUserPanel").click(function() {
+    $("#closeCreateUserPanel").click(function() {
         $("#createUserModal").css({ display: 'none' })
     });
 

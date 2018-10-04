@@ -1,4 +1,4 @@
-#createUserModal {
+#createUserModal, #updateUserModal {
   display: none;
   position: fixed;
   top: 0;
