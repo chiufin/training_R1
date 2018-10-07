@@ -9,20 +9,33 @@ var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login')
 var apiRouter = require('./routes/api')
 
-// var mysql = require('mysql');
-// var myConnection  = require('express-myconnection')
+var mysql = require('mysql');
 
-// var dbOptions = {
+// var connection = mysql.createConnection({
 //   host     : 'localhost',
 //   user     : 'root',
 //   password : 'password',
-//   database: 'users'
-// }
+//   database: 'training_r1'
+// });
+//  connection.connect();
+//  connection.query('SELECT * FROM cats', function(err, rows, fields) {
+//   if (err) throw err;
+//   console.log('The solution is: ', rows[0]);
+// });
+//  connection.end();
+var myConnection  = require('express-myconnection')
+
+var dbOptions = {
+  host     : 'localhost',
+  user     : 'root',
+  password : 'password',
+  database: 'training_r1'
+}
 
 var app = express();
 const port = 3000
 
-// app.use(myConnection(mysql, dbOptions, 'pool'))
+app.use(myConnection(mysql, dbOptions, 'pool'))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -49,6 +62,7 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
+  // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
@@ -59,4 +73,4 @@ app.use(function(err, req, res, next) {
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
-module.exports = app;
+// module.exports = app;
