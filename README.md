@@ -4,7 +4,7 @@
 ```
 cd portal
 docker build -t training-r1 .
-docker run -p 3000:3000 training-r1 .
+docker run -p 3000:3000 training-r1 
 docker-machine ip default
 open [ip]:3000
 ```
@@ -19,6 +19,17 @@ enter in mysql
 ```
 docker exec -it training_r1_db_1 mysql -uroot -p
 ```
+
+`docker build -t single-mysql`
+`docker run --name linkedapp -p 3306:3306 -d linkedapp`
+
+`docker run --name linkednode-app --link single_mysql:mysql -d linkednode`
+
+## Enter Mysql in Mac
+```
+./usr/local/mysql/bin/mysql -uroot -p
+```
+
 
 Objective:
 Training to get familiar with JQuery/ExpressJS/Pug/Docker
@@ -72,5 +83,6 @@ implement file upload/downlod function with jquery/nodejs
 
 ### Problem tackling
 - [MySQL version 8 problem](https://o7planning.org/en/11959/connecting-to-mysql-database-using-nodejs)
+  `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';`
 - [Clear docker compose volumes](https://github.com/docker-library/mysql/issues/51)
   docker-compose does extra work to preserve volumes between runs (thus preserving the database); you may want to try `docker-compose rm -v` to delete everything and try starting it up again.
