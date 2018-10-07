@@ -86,3 +86,13 @@ implement file upload/downlod function with jquery/nodejs
   `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';`
 - [Clear docker compose volumes](https://github.com/docker-library/mysql/issues/51)
   docker-compose does extra work to preserve volumes between runs (thus preserving the database); you may want to try `docker-compose rm -v` to delete everything and try starting it up again.
+
+
+
+
+
+  ```
+  docker run -it --rm --publish 3306:3306 --name mysql8 mysql8
+
+  docker exec -it mysql8 mysql -uroot -p
+  ```
