@@ -90,9 +90,16 @@ implement file upload/downlod function with jquery/nodejs
 
 
 
+# 本地端 連 mysql container 
 
-  ```
-  docker run -it --rm --publish 3306:3306 --name mysql8 mysql8
+```
+cd mysql
 
-  docker exec -it mysql8 mysql -uroot -p
-  ```
+docker build -t mysql5 .
+
+docker run -it --rm --publish 3306:3306 --name mysql5 mysql5
+
+docker exec -it mysql5 mysql -uroot -p (連進去 MYSQL)
+```
+
+!! WINDOWS HOST need to fill in `docker-machine ip`

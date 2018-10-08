@@ -26,7 +26,7 @@ var mysql = require('mysql');
 var myConnection  = require('express-myconnection')
 
 var dbOptions = {
-  host     : 'localhost',
+  host     : '192.168.99.100',
   user     : 'root',
   password : 'password',
   database: 'training_r1'
