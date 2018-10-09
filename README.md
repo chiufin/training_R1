@@ -99,7 +99,8 @@ docker build -t mysql5 .
 
 docker run -it --rm --publish 3306:3306 --name mysql5 mysql5
 
-docker exec -it mysql5 mysql -uroot -p (連進去 MYSQL)
+docker exec -it mysql5 mysql -uroot -p 
+(連進去 MYSQL)
 ```
 
 !! WINDOWS HOST need to fill in `docker-machine ip`

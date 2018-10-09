@@ -1,14 +1,16 @@
-CREATE TABLE cats
+CREATE TABLE user
 (
-  id              INT unsigned NOT NULL AUTO_INCREMENT, # Unique ID for the record
-  name            VARCHAR(150) NOT NULL,                # Name of the cat
-  owner           VARCHAR(150) NOT NULL,                # Owner of the cat
-  birth           DATE NOT NULL,                        # Birthday of the cat
-  PRIMARY KEY     (id)                                  # Make the id the primary key
+  id              INT(10) unsigned NOT NULL AUTO_INCREMENT,
+  name            VARCHAR(150) NOT NULL,
+  email           VARCHAR(320) NOT NULL,
+  psw             CHAR(32) NOT NULL,
+  -- created_time    TIMESTAMP NOT NULL,
+  -- updated_time    TIMESTAMP,
+  PRIMARY KEY     (id)                                 
 );
 
 
-INSERT INTO cats ( name, owner, birth) VALUES
-  ( 'Sandy', 'Lennon', '2015-01-03' ),
-  ( 'Cookie', 'Casey', '2013-11-13' ),
-  ( 'Charlie', 'River', '2016-05-21' );
+INSERT INTO user ( name, email, psw) VALUES
+  ( 'Stacy', 'stacy.chen@innovasolutions.com', 'stacy' ),
+  ( 'Wilson', 'wilson.chen@innovasolutions.com', 'wilson' ),
+  ( 'Jason', 'jason.chen@innvovasolutions.com', 'jason' );

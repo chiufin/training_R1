@@ -9,7 +9,11 @@ block content
     button#createUser(class="mdl-button mdl-js-button") Create User
     ul(class="mdl-list")
         each val, i in users
-            li(class="mdl-list__item")= val
+            li(class="mdl-list__item")
+                div(class="list") 
+                    p(class="id")  #{val.id}
+                    p #{val.name} 
+                    p #{val.email}
                 button(class="edit mdl-button mdl-js-button mdl-button--icon") 
                     div(id="modify_user"+i class="icon material-icons") edit
                     div(class="mdl-tooltip" data-mdl-for="modify_user"+i) edit

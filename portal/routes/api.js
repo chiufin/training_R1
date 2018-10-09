@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var mysql = require('mysql');
 
 // send form
 router.post('/login', function(req, res){
@@ -20,6 +21,26 @@ router.get('/logout', function(req, res){
   return res.redirect('/login')
 })
 
+//get user 
+// router.get('/users', function(req, res){
+//   var userList = []
+//     var connection = mysql.createConnection({
+//       host     : '192.168.99.100',
+//       user     : 'root',
+//       password : 'password',
+//       database : 'training_r1'
+//     });
+//     connection.connect();
+//     connection.query('SELECT * FROM user', function(err, users, fields) {
+//       if (err) throw err;
+
+//       res.json(users)
+//     });
+//     connection.end();
+// })
+
+
+
 //create user
 router.post('/users', function(req, res){
   console.log(req.body.email)
@@ -36,12 +57,28 @@ router.get('/users/(:id)', function(req, res){
 router.put('/users/(:id)', function(req, res){
   console.log(req.body.email)
   console.log(req.body.password)
-  res.json({ message: `Successfully updated ${req.params.id}` });
+ 
+  
 })
 
 //delete user
 router.delete('/users/(:id)', function(req, res){
-  console.log(req.params.id)
+  console.log('delete'+ req.params.id)
+  try{
+    var connection = mysql.createConnection({
+      host     : '192.168.99.100',
+      user     : 'root',
+      password : 'password',
+      database : 'training_r1'
+    });
+    connection.connect();
+    connection.query(`DELETE FROM user WHERE id=${req.params.id}`, function(err, results, fields) {
+      if (err) throw err;
+      console.log('deleted ' + results);
+    });
+  }catch(err){
+    console.log(err)
+  }
   res.json({ message: `Successfully deleted ${req.params.id}` });
 })
 
