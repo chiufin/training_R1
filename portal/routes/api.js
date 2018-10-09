@@ -59,13 +59,11 @@ router.post('/users', function(req, res){
 
     connection.query( insertQuery, function(err, results, fields) {
       if (err) throw err;
-      console.log('create ' + results);
+      return res.redirect('/users')
     });
   }catch(err){
     console.log(err)
   }
-
-  res.json( req.body );
   //return res.redirect('/users')
 })
 
