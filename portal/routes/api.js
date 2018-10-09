@@ -69,7 +69,22 @@ router.post('/users', function(req, res){
 
 //get certain user
 router.get('/users/(:id)', function(req, res){
-  res.json({ email: 'staccc.chen@innovasolutions.com', password: '12345' });
+  try{
+    var connection = mysql.createConnection({
+      host     : '192.168.99.100',
+      user     : 'root',
+      password : 'password',
+      database : 'training_r1'
+    });
+    connection.connect();
+    connection.query(`SELECT * FROM user WHERE id=${JSON.stringify(req.params.id)}`, function(err, result, fields) {
+      if (err) throw err;
+      res.json(result[0]);
+    });
+    connection.end();
+  }catch(err){
+    console.log(err)
+  }
 })
 
 //update certain user
