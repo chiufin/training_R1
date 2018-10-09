@@ -43,9 +43,30 @@ router.get('/logout', function(req, res){
 
 //create user
 router.post('/users', function(req, res){
+  console.log(req.body.name)
   console.log(req.body.email)
   console.log(req.body.password)
-  res.json({ message: 'successfully' })
+  try{
+    var connection = mysql.createConnection({
+      host     : '192.168.99.100',
+      user     : 'root',
+      password : 'password',
+      database : 'training_r1'
+    });
+    connection.connect();
+    // var insertQuery = `INSERT INTO user ( name, email, psw) VALUES ( 'staccccy',  'staccccy.chen@innova.comm',  'staccccy' )`
+    var insertQuery = `INSERT INTO user ( name, email, psw) VALUES ( ${JSON.stringify(req.body.name)}, ${JSON.stringify(req.body.email)}, ${JSON.stringify(req.body.password)} )`
+
+    connection.query( insertQuery, function(err, results, fields) {
+      if (err) throw err;
+      console.log('create ' + results);
+    });
+  }catch(err){
+    console.log(err)
+  }
+
+  res.json( req.body );
+  //return res.redirect('/users')
 })
 
 //get certain user

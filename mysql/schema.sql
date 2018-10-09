@@ -10,7 +10,7 @@ CREATE TABLE user
 );
 
 
-INSERT INTO user ( name, email, psw) VALUES
+INSERT INTO user ( name, email, psw ) VALUES
   ( 'Stacy', 'stacy.chen@innovasolutions.com', 'stacy' ),
   ( 'Wilson', 'wilson.chen@innovasolutions.com', 'wilson' ),
   ( 'Jason', 'jason.chen@innvovasolutions.com', 'jason' );
