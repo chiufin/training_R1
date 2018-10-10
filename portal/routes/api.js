@@ -66,10 +66,15 @@ router.get('/users/(:id)', function(req, res){
 
 //update certain user
 router.put('/users/(:id)', function(req, res){
-  console.log(req.body.email)
-  console.log(req.body.password)
- 
-  
+  try{
+    connection.query(`DELETE FROM user WHERE id=${req.params.id}`, function(err, results, fields) {
+      if (err) throw err;
+      console.log('deleted ' + results);
+    });
+  }catch(err){
+    console.log(err)
+  }
+  res.json({ message: `Successfully updated ${req.params.id}` });
 })
 
 //delete user

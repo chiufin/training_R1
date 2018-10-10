@@ -2,14 +2,17 @@ div#updateUserModal
     div(class='modal_content')
         h1 Update User
         div(class="mdl-textfield mdl-js-textfield")
+            label(for='update_user_id' class="mdl-textfield__label") Id
+            input(type='input' id='update_user_id' class="mdl-textfield__input")
+        div(class="mdl-textfield mdl-js-textfield")
             label(for='update_user_name' class="mdl-textfield__label") Name
-            input(type='input' id='update_user_name' name='name' class="mdl-textfield__input")
+            input(type='input' id='update_user_name' class="mdl-textfield__input")
         div(class="mdl-textfield mdl-js-textfield")
             label(for='update_user_email' class="mdl-textfield__label") Email
-            input(type='input' id='update_user_email' name='email' class="mdl-textfield__input")
+            input(type='input' id='update_user_email' class="mdl-textfield__input")
         div(class="mdl-textfield mdl-js-textfield")
             label(for='update_user_password' class="mdl-textfield__label") Password
-            input(type='password' id='update_user_password' name='password' class="mdl-textfield__input")
+            input(type='password' id='update_user_password' class="mdl-textfield__input")
         div
             button#updateUserBtn(class="mdl-button mdl-js-button") Update
         button#closeUpdateUserPanel(class="modal_close mdl-button mdl-js-button mdl-button--icon") 
