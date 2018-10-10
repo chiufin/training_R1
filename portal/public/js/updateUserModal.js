@@ -19,11 +19,19 @@ $( document ).ready(function() {
 
 
     $("#updateUserBtn").click(function() {
-        var id = $("#update_user_id")[0].value
+        var payload = {
+            id: $("#update_user_id")[0].value,
+            body: {
+                name: $("#update_user_name")[0].value,
+                email: $("#update_user_email")[0].value,
+                psw: $("#update_user_password")[0].value
+            }
+        }
+        console.log(payload)
         var callback = function( res ) {
             window.location = '/users'
         }
-        api.updateUser({ id }, callback)
+        api.updateUser(payload, callback)
     });
 
 

@@ -66,10 +66,15 @@ router.get('/users/(:id)', function(req, res){
 
 //update certain user
 router.put('/users/(:id)', function(req, res){
+  var data = {
+    name: JSON.stringify(req.body.name),
+    email: JSON.stringify(req.body.email),
+    psw: JSON.stringify(req.body.psw),
+    id: JSON.stringify(req.params.id)
+  }
   try{
-    connection.query(`DELETE FROM user WHERE id=${req.params.id}`, function(err, results, fields) {
+    connection.query(`UPDATE user SET name=${data.name},email=${data.email},psw=${data.psw} WHERE id=${data.id}`, function(err, results, fields) {
       if (err) throw err;
-      console.log('deleted ' + results);
     });
   }catch(err){
     console.log(err)
@@ -83,7 +88,6 @@ router.delete('/users/(:id)', function(req, res){
   try{
     connection.query(`DELETE FROM user WHERE id=${req.params.id}`, function(err, results, fields) {
       if (err) throw err;
-      console.log('deleted ' + results);
     });
   }catch(err){
     console.log(err)

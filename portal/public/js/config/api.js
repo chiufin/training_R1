@@ -19,7 +19,8 @@ var api = {
     updateUser: function(payload, callback){
         $.ajax({
             type: "PUT",
-            url: `api/users/${payload.id}`
+            url: `api/users/${payload.id}`,
+            data: payload.body
         })
         .done(callback);
     },
