@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mysql = require('mysql');
+var connection = require('../db.js').connection;
 
 // send form
 router.post('/login', function(req, res){
@@ -24,19 +24,11 @@ router.get('/logout', function(req, res){
 //get user 
 // router.get('/users', function(req, res){
 //   var userList = []
-//     var connection = mysql.createConnection({
-//       host     : '192.168.99.100',
-//       user     : 'root',
-//       password : 'password',
-//       database : 'training_r1'
-//     });
-//     connection.connect();
 //     connection.query('SELECT * FROM user', function(err, users, fields) {
 //       if (err) throw err;
 
 //       res.json(users)
 //     });
-//     connection.end();
 // })
 
 
@@ -47,14 +39,6 @@ router.post('/users', function(req, res){
   console.log(req.body.email)
   console.log(req.body.password)
   try{
-    var connection = mysql.createConnection({
-      host     : '192.168.99.100',
-      user     : 'root',
-      password : 'password',
-      database : 'training_r1'
-    });
-    connection.connect();
-    // var insertQuery = `INSERT INTO user ( name, email, psw) VALUES ( 'staccccy',  'staccccy.chen@innova.comm',  'staccccy' )`
     var insertQuery = `INSERT INTO user ( name, email, psw) VALUES ( ${JSON.stringify(req.body.name)}, ${JSON.stringify(req.body.email)}, ${JSON.stringify(req.body.password)} )`
 
     connection.query( insertQuery, function(err, results, fields) {
@@ -70,18 +54,11 @@ router.post('/users', function(req, res){
 //get certain user
 router.get('/users/(:id)', function(req, res){
   try{
-    var connection = mysql.createConnection({
-      host     : '192.168.99.100',
-      user     : 'root',
-      password : 'password',
-      database : 'training_r1'
-    });
-    connection.connect();
     connection.query(`SELECT * FROM user WHERE id=${JSON.stringify(req.params.id)}`, function(err, result, fields) {
       if (err) throw err;
       res.json(result[0]);
     });
-    connection.end();
+    
   }catch(err){
     console.log(err)
   }
@@ -99,13 +76,6 @@ router.put('/users/(:id)', function(req, res){
 router.delete('/users/(:id)', function(req, res){
   console.log('delete'+ req.params.id)
   try{
-    var connection = mysql.createConnection({
-      host     : '192.168.99.100',
-      user     : 'root',
-      password : 'password',
-      database : 'training_r1'
-    });
-    connection.connect();
     connection.query(`DELETE FROM user WHERE id=${req.params.id}`, function(err, results, fields) {
       if (err) throw err;
       console.log('deleted ' + results);
