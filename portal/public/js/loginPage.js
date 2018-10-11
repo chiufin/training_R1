@@ -10,7 +10,7 @@ $( document ).ready(function() {
             if(msg.login == true){
                 window.location = '/users'
             }else{
-                window.location = '/login'
+                alert('error')
             }
         }
         api.login(payload, callback)
