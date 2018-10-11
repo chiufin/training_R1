@@ -6,12 +6,11 @@ CREATE TABLE user
   psw             CHAR(32) NOT NULL,
   -- created_time    TIMESTAMP NULL DEFAULT NULL,
   -- updated_time    TIMESTAMP NULL DEFAULT NULL,
-  login_status    TINYINT(1) NOT NULL,
   PRIMARY KEY     (id)                                 
 );
 
 
 INSERT INTO user ( name, email, psw, login_status ) VALUES
-  ( 'Stacy', 'stacy.chen@innovasolutions.com', 'stacy', false ),
-  ( 'Wilson', 'wilson.chen@innovasolutions.com', 'wilson', false ),
-  ( 'Jason', 'jason.chen@innvovasolutions.com', 'jason', false );
+  ( 'Stacy', 'stacy.chen@innovasolutions.com', 'stacy' ),
+  ( 'Wilson', 'wilson.chen@innovasolutions.com', 'wilson' ),
+  ( 'Jason', 'jason.chen@innvovasolutions.com', 'jason' );

@@ -18,6 +18,7 @@ router.post('/login', function(req, res){
 router.get('/logout', function(req, res){
   res.clearCookie('account', {path:'/'});
   res.clearCookie('password', {path:'/'});
+  
   return res.redirect('/login')
 })
 
