@@ -21,23 +21,8 @@ router.get('/logout', function(req, res){
   return res.redirect('/login')
 })
 
-//get user 
-// router.get('/users', function(req, res){
-//   var userList = []
-//     connection.query('SELECT * FROM user', function(err, users, fields) {
-//       if (err) throw err;
-
-//       res.json(users)
-//     });
-// })
-
-
-
 //create user
 router.post('/users', function(req, res){
-  console.log(req.body.name)
-  console.log(req.body.email)
-  console.log(req.body.password)
   try{
     var insertQuery = `INSERT INTO user ( name, email, psw) VALUES ( ${JSON.stringify(req.body.name)}, ${JSON.stringify(req.body.email)}, ${JSON.stringify(req.body.password)} )`
 
@@ -48,7 +33,6 @@ router.post('/users', function(req, res){
   }catch(err){
     console.log(err)
   }
-  //return res.redirect('/users')
 })
 
 //get certain user
@@ -84,7 +68,6 @@ router.put('/users/(:id)', function(req, res){
 
 //delete user
 router.delete('/users/(:id)', function(req, res){
-  console.log('delete'+ req.params.id)
   try{
     connection.query(`DELETE FROM user WHERE id=${req.params.id}`, function(err, results, fields) {
       if (err) throw err;
