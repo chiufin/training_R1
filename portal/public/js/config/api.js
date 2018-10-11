@@ -1,5 +1,12 @@
 var api = {
-    login: function(){},
+    login: function(payload, callback){
+        $.ajax({
+            type: "POST",
+            url: `api/login`,
+            data: payload.body
+        })
+        .done(callback);
+    },
     logout: function(){},
     getUserList: function(){},
     getUser: function(payload, callback){

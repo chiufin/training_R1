@@ -2,16 +2,25 @@ var express = require('express');
 var router = express.Router();
 var connection = require('../db.js').connection;
 
-// send form
+//click signIn button
 router.post('/login', function(req, res){
-  if(req.body.account == '' || req.body.password== ''){
-    return res.redirect('/login')
-  }else{
-    //set cookie
-    res.cookie('account', req.body.account, { path: '/', signed: true})
-    res.cookie('password', req.body.password, { path: '/', signed: true})
-    return res.redirect('/users')
+  console.log(req.body.account)
+  try{
+    connection.query(`SELECT * FROM user WHERE email=${JSON.stringify(req.body.account)}`, function(err, result, fields) {
+      if (err) throw err; 
+      if(result.length > 0 && result[0].psw == req.body.psw){
+          //set cookie
+          res.json({login: true})
+          res.cookie('account', req.body.account, { path: '/', signed: true})
+          res.cookie('password', req.body.psw, { path: '/', signed: true})
+      }else{
+          res.json({login: false})
+      }
+    });
+  }catch(err){
+    res.json({login: false})
   }
+  
 })
 
 //logout

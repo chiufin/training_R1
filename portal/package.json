@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "debug": "set DEBUG=myapp:* & npm start"
+    "dev": "nodemon app.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
