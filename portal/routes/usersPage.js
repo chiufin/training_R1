@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   if(req.signedCookies.account && req.signedCookies.password){
     connection.query('SELECT * FROM user', function(err, result, fields) {
       if (err) throw err;
-      res.render('users', {userName: req.signedCookies.account ,users: result});  
+      res.render('usersPage', {userName: req.signedCookies.account ,users: result});  
     });
   }else{
     return res.redirect('/login')

@@ -8,16 +8,16 @@ router.get('/', function(req, res, next) {
       connection.query(`SELECT * FROM user WHERE email=${JSON.stringify(req.signedCookies.account)}`, function(err, result, fields) {
         if (err) throw err; 
         if(result.length > 0 && result[0].psw == req.signedCookies.password){
-          res.render('login', { ifLogin: true });
+          res.render('loginPage', { ifLogin: true });
         }else{
-          res.render('login', { ifLogin: false });
+          res.render('loginPage', { ifLogin: false });
         }
       });
     }catch(err){
-      res.render('login', { ifLogin: false });
+      res.render('loginPage', { ifLogin: false });
     }
   }else{
-    res.render('login', { ifLogin: false });
+    res.render('loginPage', { ifLogin: false });
   }
 });
 
