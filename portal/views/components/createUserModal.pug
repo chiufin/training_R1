@@ -1,7 +1,6 @@
 div#createUserModal
     div(class='modal_content')
         h1 Create User
-        form(method='POST' action='/api/users')
             div(class="mdl-textfield mdl-js-textfield")
                 label(for='create_user_name' class="mdl-textfield__label") Name
                 input(type='input' id='create_user_name' name='name' class="mdl-textfield__input")
@@ -12,6 +11,6 @@ div#createUserModal
                 label(for='create_user_psw' class="mdl-textfield__label") Password
                 input(type='password' id='create_user_psw' name='password' class="mdl-textfield__input")
             div
-                button(type='submit' class="mdl-button mdl-js-button") Create
+                button(class="submit mdl-button mdl-js-button") Create
         button#closeCreateUserPanel(class="modal_close mdl-button mdl-js-button mdl-button--icon") 
             i(class="material-icons") clear

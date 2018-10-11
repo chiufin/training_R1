@@ -1,5 +1,22 @@
 $( document ).ready(function() {
 
+    $("#createUserModal").find(".submit").click(function(){
+        var payload = { 
+            body: {
+                name: $("#createUserModal").find("input")[0].value,
+                email: $("#createUserModal").find("input")[1].value,
+                password: $("#createUserModal").find("input")[2].value,
+            }
+        }
+        console.log(payload)
+        var callback = function( msg ) {
+            if(msg){
+                window.location = '/users'
+            }
+        }
+        api.createUser(payload, callback)
+    })
+
 
     //modal
     $("#createUser").click(function() {

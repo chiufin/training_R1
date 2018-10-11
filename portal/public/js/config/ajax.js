@@ -8,7 +8,7 @@ var api = {
         .done(callback);
     },
     logout: function(){},
-    getUserList: function(){},
+    // getUserList: function(){},
     getUser: function(payload, callback){
         $.ajax({
             type: "GET",
@@ -16,10 +16,11 @@ var api = {
         })
         .done(callback);
     },
-    createUser: function(callback){
+    createUser: function(payload, callback){
         $.ajax({
             type: "POST",
-            url: `api/users`
+            url: `api/users`,
+            data: payload.body
         })
         .done(callback);
     },

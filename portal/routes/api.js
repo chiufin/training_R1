@@ -37,12 +37,12 @@ router.get('/logout', function(req, res){
 router.post('/users', function(req, res){
   try{
     var insertQuery = `INSERT INTO user ( name, email, psw) VALUES ( ${JSON.stringify(req.body.name)}, ${JSON.stringify(req.body.email)}, ${JSON.stringify(req.body.password)} )`
-
     connection.query( insertQuery, function(err, results, fields) {
       if (err) throw err;
-      return res.redirect('/users')
+      res.json({updateUser: true})
     });
   }catch(err){
+    res.json({updateUser: false})
     console.log(err)
   }
 })
