@@ -8,6 +8,12 @@ $( document ).ready(function() {
         var id =  $('.id')[index].textContent;
         var payload = { id }
         var callback = function( res ) {
+            if(res.updated_time){
+                $(".time").text(`Updated Time: ${res.updated_time}`)
+            }else{
+                $(".time").text(`Created Time: ${res.created_time}`)
+            }
+            
             $("#update_user_id").val(res.id)
             $("#update_user_name").val(res.name)
             $("#update_user_email").val(res.email)
