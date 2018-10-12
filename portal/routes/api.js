@@ -1,9 +1,18 @@
-var express = require('express');
-var router = express.Router();
-var connection = require('../db.js').connection;
+const express = require('express');
+const router = express.Router();
+const connection = require('../db.js').connection;
+const { check, validationResult } = require('express-validator/check');
 
 //click signIn button
-router.post('/login', function(req, res){
+router.post('/login', [
+  check('account').isEmail(),
+  check('psw').isLength({ min: 5 })
+],function(req, res){
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+  
   if(req.body.account && req.body.psw){
     try{
       connection.query(`SELECT * FROM user WHERE email=${JSON.stringify(req.body.account)}`, function(err, result, fields) {

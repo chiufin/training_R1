@@ -46,27 +46,4 @@ $( document ).ready(function() {
         }
     }
 
-
-
-    // var mvc = {
-    //     model: {
-    //         users: [
-
-    //         ]
-    //     },
-    //     view: {},
-    //     controller: {}
-    // }
-
-    // var modal = {
-    //     showModal: function(){
-
-    //     },
-    //     closeModal: function(){
-
-    //     }
-    // }
-
-
-
 });

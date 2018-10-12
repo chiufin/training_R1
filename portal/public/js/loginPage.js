@@ -6,14 +6,17 @@ $( document ).ready(function() {
                 psw: $("#loginPage").find("input")[1].value
             }
         }
-        var callback = function( msg ) {
+        var successCallback = function( msg ) {
             if(msg.login == true){
                 window.location = '/users'
             }else{
-                alert('error')
+                $("#loginPage").find(".error-msg").css({ visibility: 'visible' })
             }
         }
-        api.login(payload, callback)
+        var errorCallback = function( msg ) {
+            $("#loginPage").find(".error-msg").css({ visibility: 'visible' })
+        }
+        api.login(payload, successCallback, errorCallback)
     });
     
 });
