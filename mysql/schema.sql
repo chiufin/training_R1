@@ -5,7 +5,7 @@ CREATE TABLE user
   email           VARCHAR(320) NOT NULL,
   psw             CHAR(32) NOT NULL,
   created_time    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  -- updated_time    TIMESTAMP NULL DEFAULT NULL,
+  updated_time    TIMESTAMP NULL,
   PRIMARY KEY     (id)                                 
 );
 

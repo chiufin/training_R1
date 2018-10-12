@@ -94,7 +94,7 @@ router.put('/users/(:id)', [
         id: JSON.stringify(req.params.id)
       }
       try{
-        connection.query(`UPDATE user SET name=${data.name},email=${data.email},psw=${data.psw} WHERE id=${data.id}`, function(err, results, fields) {
+        connection.query(`UPDATE user SET name=${data.name},email=${data.email},psw=${data.psw},updated_time=CURRENT_TIMESTAMP WHERE id=${data.id}`, function(err, results, fields) {
           if (err) throw err;
         });
       }catch(err){
