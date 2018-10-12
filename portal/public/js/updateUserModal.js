@@ -24,28 +24,32 @@ $( document ).ready(function() {
 
 
     $("#updateUserBtn").click(function() {
-        var payload = {
-            id: $("#update_user_id")[0].value,
-            body: {
-                name: $("#update_user_name")[0].value,
-                email: $("#update_user_email")[0].value,
-                psw: $("#update_user_password")[0].value
+        if($("#updateUserModal").find("input")[3].value !== $("#updateUserModal").find("input")[4].value){
+            $("#updateUserModal").find(".error-psw-msg").css({ visibility: 'visible' })
+        }else{
+            var payload = {
+                id: $("#updateUserModal").find("input")[0].value,
+                body: {
+                    name: $("#updateUserModal").find("input")[1].value,
+                    email: $("#updateUserModal").find("input")[2].value,
+                    psw: $("#updateUserModal").find("input")[3].value
+                }
             }
-        }
-
-        var successCallback = function( msg ) {
-            console.log(msg)
-            if(msg){
-                window.location = '/users'
-            }else{
+    
+            var successCallback = function( msg ) {
+                console.log(msg)
+                if(msg){
+                    window.location = '/users'
+                }else{
+                    $("#updateUserModal").find(".error-msg").css({ visibility: 'visible' })
+                }
+            }
+            var errorCallback = function( msg ) {
+                console.log(msg)
                 $("#updateUserModal").find(".error-msg").css({ visibility: 'visible' })
             }
+            api.updateUser(payload, successCallback, errorCallback)
         }
-        var errorCallback = function( msg ) {
-            console.log(msg)
-            $("#updateUserModal").find(".error-msg").css({ visibility: 'visible' })
-        }
-        api.updateUser(payload, successCallback, errorCallback)
     });
 
 
