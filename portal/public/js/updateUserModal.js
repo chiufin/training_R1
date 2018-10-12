@@ -27,11 +27,20 @@ $( document ).ready(function() {
                 psw: $("#update_user_password")[0].value
             }
         }
-        console.log(payload)
-        var callback = function( res ) {
-            window.location = '/users'
+
+        var successCallback = function( msg ) {
+            console.log(msg)
+            if(msg){
+                window.location = '/users'
+            }else{
+                $("#updateUserModal").find(".error-msg").css({ visibility: 'visible' })
+            }
         }
-        api.updateUser(payload, callback)
+        var errorCallback = function( msg ) {
+            console.log(msg)
+            $("#updateUserModal").find(".error-msg").css({ visibility: 'visible' })
+        }
+        api.updateUser(payload, successCallback, errorCallback)
     });
 
 

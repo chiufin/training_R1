@@ -26,13 +26,14 @@ var api = {
             error: errorCallback
         })
     },
-    updateUser: function(payload, callback){
+    updateUser: function(payload, successCallback, errorCallback){
         $.ajax({
             type: "PUT",
             url: `api/users/${payload.id}`,
-            data: payload.body
+            data: payload.body,
+            success: successCallback,
+            error: errorCallback
         })
-        .done(callback);
     },
     deleteUser: function(payload, callback){
         $.ajax({

@@ -10,11 +10,7 @@ $( document ).ready(function() {
         }
 
         var successCallback = function( msg ) {
-            if(msg){
-                window.location = '/users'
-            }else{
-                $("#createUserModal").find(".error-msg").css({ visibility: 'visible' })
-            }
+            window.location = '/users'
         }
         var errorCallback = function( msg ) {
             $("#createUserModal").find(".error-msg").css({ visibility: 'visible' })

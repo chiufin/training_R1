@@ -44,7 +44,6 @@ router.get('/logout', function(req, res){
 
 //create user
 router.post('/users', [
-  check('name').isLength({ min: 1 }),
   check('email').isEmail(),
   check('password').isLength({ min: 5 })
   ],function(req, res){
@@ -79,21 +78,29 @@ router.get('/users/(:id)', function(req, res){
 })
 
 //update certain user
-router.put('/users/(:id)', function(req, res){
-  var data = {
-    name: JSON.stringify(req.body.name),
-    email: JSON.stringify(req.body.email),
-    psw: JSON.stringify(req.body.psw),
-    id: JSON.stringify(req.params.id)
-  }
-  try{
-    connection.query(`UPDATE user SET name=${data.name},email=${data.email},psw=${data.psw} WHERE id=${data.id}`, function(err, results, fields) {
-      if (err) throw err;
-    });
-  }catch(err){
-    console.log(err)
-  }
-  res.json({ message: `Successfully updated ${req.params.id}` });
+router.put('/users/(:id)', [
+  check('name').isLength({ min: 1 }),
+  check('email').isEmail(),
+  check('psw').isLength({ min: 5 })
+  ],function(req, res){
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+      var data = {
+        name: JSON.stringify(req.body.name),
+        email: JSON.stringify(req.body.email),
+        psw: JSON.stringify(req.body.psw),
+        id: JSON.stringify(req.params.id)
+      }
+      try{
+        connection.query(`UPDATE user SET name=${data.name},email=${data.email},psw=${data.psw} WHERE id=${data.id}`, function(err, results, fields) {
+          if (err) throw err;
+        });
+      }catch(err){
+        console.log(err)
+      }
+      res.json({ message: `Successfully updated ${req.params.id}` });
 })
 
 //delete user
