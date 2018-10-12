@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const connection = require('../db.js').connection;
 const { check, validationResult } = require('express-validator/check');
+var md5 = require("blueimp-md5");
+
 
 //click signIn button
 router.post('/login', [
@@ -17,7 +19,7 @@ router.post('/login', [
     try{
       connection.query(`SELECT * FROM user WHERE email=${JSON.stringify(req.body.account)}`, function(err, result, fields) {
         if (err) throw err; 
-        if(result.length > 0 && result[0].psw == req.body.psw){
+        if(result.length > 0 && result[0].psw == md5(req.body.psw)){
             //set cookie
             res.cookie('account', req.body.account, { path: '/', signed: true})
             res.cookie('password', req.body.psw, { path: '/', signed: true})
@@ -53,7 +55,7 @@ router.post('/users', [
       return res.status(422).json({ errors: errors.array() });
     }
     try{
-      var insertQuery = `INSERT INTO user ( name, email, psw) VALUES ( ${JSON.stringify(req.body.name)}, ${JSON.stringify(req.body.email)}, ${JSON.stringify(req.body.password)} )`
+      var insertQuery = `INSERT INTO user ( name, email, psw) VALUES ( ${JSON.stringify(req.body.name)}, ${JSON.stringify(req.body.email)}, ${JSON.stringify(md5(req.body.password))} )`
       connection.query( insertQuery, function(err, results, fields) {
         if (err) throw err;
         res.json({updateUser: true})
@@ -90,7 +92,7 @@ router.put('/users/(:id)', [
       var data = {
         name: JSON.stringify(req.body.name),
         email: JSON.stringify(req.body.email),
-        psw: JSON.stringify(req.body.psw),
+        psw: JSON.stringify(md5(req.body.psw)),
         id: JSON.stringify(req.params.id)
       }
       try{
