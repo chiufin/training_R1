@@ -17,13 +17,14 @@ var api = {
         })
         .done(callback);
     },
-    createUser: function(payload, callback){
+    createUser: function(payload, successCallback, errorCallback){
         $.ajax({
             type: "POST",
             url: `api/users`,
-            data: payload.body
+            data: payload.body,
+            success: successCallback,
+            error: errorCallback
         })
-        .done(callback);
     },
     updateUser: function(payload, callback){
         $.ajax({

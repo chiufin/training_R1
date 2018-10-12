@@ -8,13 +8,18 @@ $( document ).ready(function() {
                 password: $("#createUserModal").find("input")[2].value,
             }
         }
-        console.log(payload)
-        var callback = function( msg ) {
+
+        var successCallback = function( msg ) {
             if(msg){
                 window.location = '/users'
+            }else{
+                $("#createUserModal").find(".error-msg").css({ visibility: 'visible' })
             }
         }
-        api.createUser(payload, callback)
+        var errorCallback = function( msg ) {
+            $("#createUserModal").find(".error-msg").css({ visibility: 'visible' })
+        }
+        api.createUser(payload, successCallback, errorCallback)
     })
 
 
