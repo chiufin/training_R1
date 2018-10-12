@@ -17,7 +17,6 @@ $( document ).ready(function() {
             $("#update_user_id").val(res.id)
             $("#update_user_name").val(res.name)
             $("#update_user_email").val(res.email)
-            $("#update_user_password").val(res.psw)
         }
         api.getUser(payload, callback)
     });
