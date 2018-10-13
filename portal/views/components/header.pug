@@ -2,10 +2,17 @@ header
     header(class="mdl-layout__header")
         div(class="mdl-layout__header-row")
             span(class="mdl-layout-title") Training R1
-
+            div(class="android-navigation-container")
+            nav(class="nav mdl-navigation")
+              a(class="mdl-navigation__link mdl-typography--text-uppercase" href="/users") Users
+              a(class="mdl-navigation__link mdl-typography--text-uppercase" href="/files") Files
             div(class="mdl-layout-spacer")
             nav(class="mdl-navigation")
                 span #{userName}
-                a(class="mdl-navigation__link" href="/api/logout") Log out
+                //- a(class="mdl-navigation__link" href="/api/logout") Log out
+                button(class="delete mdl-button mdl-js-button mdl-button--icon") 
+                    
+                    div(id="logout" class="icon material-icons") arrow_forward_ios
+                    div(class="mdl-tooltip" data-mdl-for="logout") logout
 
 
