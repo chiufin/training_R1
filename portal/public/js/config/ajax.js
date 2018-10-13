@@ -8,7 +8,13 @@ var api = {
             error: errorCallback
         })
     },
-    logout: function(){},
+    logout: function(successCallback, errorCallback){
+        $.ajax({
+            url: `api/logout`,
+            success: successCallback,
+            error: errorCallback
+        })
+    },
     // getUserList: function(){},
     getUser: function(payload, callback){
         $.ajax({

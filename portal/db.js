@@ -1,11 +1,7 @@
 var mysql = require('mysql');
+var dbConfig = require('./config').db
 
-var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : 'password',
-    database : 'training_r1'
-});
+var connection = mysql.createConnection(dbConfig);
 connection.connect();
 
 // connection.end();

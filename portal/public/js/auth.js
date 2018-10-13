@@ -18,5 +18,17 @@ $( document ).ready(function() {
         }
         api.login(payload, successCallback, errorCallback)
     });
-    
+
+
+    $(".logout").click(function(){
+        console.log('lgou')
+        var successCallback = function(){
+            window.location = '/login'
+        }
+        var errorCallback = function(){
+           
+        }
+        api.logout(successCallback, errorCallback)
+    })
+        
 });

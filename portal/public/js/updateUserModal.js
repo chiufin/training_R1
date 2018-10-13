@@ -22,8 +22,6 @@ $( document ).ready(function() {
     });
 
 
-    var t = "2010-06-09 13:12:01".split(/[- :]/);
-
     $("#updateUserBtn").click(function() {
         if($("#updateUserModal").find("input")[3].value !== $("#updateUserModal").find("input")[4].value){
             $("#updateUserModal").find(".error-psw-msg").css({ visibility: 'visible' })

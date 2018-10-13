@@ -38,10 +38,11 @@ router.post('/login', [
 
 //logout
 router.get('/logout', function(req, res){
+  console.log('----- lo')
   res.clearCookie('account', {path:'/'});
   res.clearCookie('password', {path:'/'});
   
-  return res.redirect('/login')
+  res.json({'logout': true})
 })
 
 //create user
