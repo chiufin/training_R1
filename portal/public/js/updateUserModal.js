@@ -13,7 +13,8 @@ $( document ).ready(function() {
             }else{
                 $(".time").text(`Created Time: ${timestamp(res.created_time)}`)
             }
-            
+
+            $("#updateUserModal").find('.input').addClass('is-dirty')
             $("#update_user_id").val(res.id)
             $("#update_user_name").val(res.name)
             $("#update_user_email").val(res.email)
