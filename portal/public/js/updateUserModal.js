@@ -6,6 +6,7 @@ $( document ).ready(function() {
         var id =  $('.id')[index].textContent;
         var payload = { id }
         var callback = function( res ) {
+            console.log(res)
             if(res.updated_time){
                 $(".time").text(`Updated Time: ${timestamp(res.updated_time)}`)
             }else{
@@ -55,13 +56,6 @@ $( document ).ready(function() {
     $("#closeUpdateUserPanel").click(function() {
         $("#updateUserModal").css({ display: 'none' })
     });
-
-    window.onclick = function(event) {
-        if (event.target.id == 'updateUserModal') {
-            $("#updateUserModal").css({ display: 'none' })
-        }
-    }
-
 
     //focus and clear error msg
     $("#updateUserModal").find("input").focus(function() {

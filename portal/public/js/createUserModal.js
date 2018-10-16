@@ -32,12 +32,6 @@ $( document ).ready(function() {
         $("#createUserModal").css({ display: 'none' })
     });
 
-    window.onclick = function(event) {
-        if (event.target.id == 'createUserModal') {
-            $("#createUserModal").css({ display: 'none' })
-        }
-    }
-
     //focus and clear error msg
     $("#createUserModal").find("input").focus(function() {
         $("#createUserModal").find(".error-msg").css({ visibility: 'hidden' })
