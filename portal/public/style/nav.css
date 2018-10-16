@@ -1,7 +1,18 @@
-.nav {
-    margin-left: 10px;
+.nav-navigation-container{
+    direction: rtl;
+    order: 1;
+    width: 500px;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
-  
+
+
+.nav{
+    direction: ltr;
+    justify-content: flex-end;
+}
+
+
 .nav .mdl-navigation__link{
     height: 60px;
     line-height: 68px;
