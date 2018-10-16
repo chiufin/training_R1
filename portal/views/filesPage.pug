@@ -3,9 +3,9 @@ extends layout
 block content
   include components/header.pug
 
-  div#filePage
+  div(id="filePage" class="page")
     h1 File List
-    button#uploadFileBtn(class="mdl-button mdl-js-button") Upload File
+    button#uploadFileBtn(class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect") Upload File
     //- ul(class="mdl-list")
     //-     each val, i in files
     //-         li(class="mdl-list__item")
