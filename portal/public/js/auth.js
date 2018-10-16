@@ -21,7 +21,6 @@ $( document ).ready(function() {
 
 
     $(".logout").click(function(){
-        console.log('lgou')
         var successCallback = function(){
             window.location = '/login'
         }
