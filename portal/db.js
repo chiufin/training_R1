@@ -1,7 +1,15 @@
-var mysql = require('mysql');
+const mysql = require('mysql');
 
-var connection = mysql.createConnection({
-    host     : 'localhost',
+const detectOS = function(){
+    if(process.platform === "win32"){
+        return '192.168.99.100'
+    }else{
+        return 'localhost'
+    }
+}
+
+const connection = mysql.createConnection({
+    host     : detectOS(),
     user     : 'root',
     password : 'password',
     database : 'training_r1'
