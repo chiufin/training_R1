@@ -19,6 +19,10 @@ $( document ).ready(function() {
         api.login(payload, successCallback, errorCallback)
     });
 
+     //focus and clear error msg
+     $("#loginPage").find("input").focus(function() {
+        $("#loginPage").find(".error-msg").css({ visibility: 'hidden' })
+    });
 
     $(".logout").click(function(){
         var successCallback = function(){

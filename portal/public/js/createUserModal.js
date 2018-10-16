@@ -38,7 +38,7 @@ $( document ).ready(function() {
         }
     }
 
-    //
+    //focus and clear error msg
     $("#createUserModal").find("input").focus(function() {
         $("#createUserModal").find(".error-msg").css({ visibility: 'hidden' })
         $("#createUserModal").find(".error-psw-msg").css({ visibility: 'hidden' })
