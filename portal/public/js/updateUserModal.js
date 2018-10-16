@@ -1,7 +1,5 @@
 $( document ).ready(function() {
     //modal
-
-
     $("#users .edit").click(function() {
         $("#updateUserModal").css({ display: 'block' })
         var index = $("#users .edit").index(this)
@@ -63,5 +61,12 @@ $( document ).ready(function() {
             $("#updateUserModal").css({ display: 'none' })
         }
     }
+
+
+    //focus and clear error msg
+    $("#updateUserModal").find("input").focus(function() {
+        $("#updateUserModal").find(".error-msg").css({ visibility: 'hidden' })
+        $("#updateUserModal").find(".error-psw-msg").css({ visibility: 'hidden' })
+    });
 
 });

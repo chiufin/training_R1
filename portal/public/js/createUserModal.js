@@ -38,4 +38,10 @@ $( document ).ready(function() {
         }
     }
 
+    //
+    $("#createUserModal").find("input").focus(function() {
+        $("#createUserModal").find(".error-msg").css({ visibility: 'hidden' })
+        $("#createUserModal").find(".error-psw-msg").css({ visibility: 'hidden' })
+    });
+
 });
