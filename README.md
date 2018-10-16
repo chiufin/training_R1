@@ -10,9 +10,9 @@ open [ip]:3000
 ```
 
 ## Docker-machine default reset
-```
-. docker-machine.sh
-```
+windows `. ./docker-machine.sh`
+mac `sh ./docker-machine.sh`
+
 
 ## Mysql
 enter in mysql
@@ -25,10 +25,7 @@ docker exec -it training_r1_db_1 mysql -uroot -p
 
 `docker run --name linkednode-app --link single_mysql:mysql -d linkednode`
 
-## Enter Mysql in Mac
-```
-./usr/local/mysql/bin/mysql -uroot -p
-```
+
 
 
 
@@ -62,8 +59,14 @@ docker exec -it mysql5 mysql -uroot -p
 (連進去 MYSQL)
 ```
 
-!! WINDOWS HOST need to fill in `docker-machine ip`
+!! WINDOWS HOST need to fill in `docker-machine ip`(db.js)
 
+
+## Enter Mysql in Mac
+```
+cd /usr/local/mysql/bin/
+./mysql -uroot -p
+```
 
 
 ##Objective:

@@ -8,9 +8,9 @@ $( document ).ready(function() {
         var callback = function( res ) {
             console.log(res)
             if(res.updated_time){
-                $(".time").text(`Updated Time: ${timestamp(res.updated_time)}`)
+                $(".time").text(`Updated Time: ${changeToTaipeiTime(res.updated_time)}`)
             }else{
-                $(".time").text(`Created Time: ${timestamp(res.created_time)}`)
+                $(".time").text(`Created Time: ${changeToTaipeiTime(res.created_time)}`)
             }
 
             $("#updateUserModal").find('.input').addClass('is-dirty')
