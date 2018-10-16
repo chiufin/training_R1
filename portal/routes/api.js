@@ -83,8 +83,8 @@ router.get('/users/(:id)', function(req, res){
 //update certain user
 router.put('/users/(:id)', [
   check('name').isLength({ min: 1 }),
-  check('email').isEmail(),
-  check('psw').isLength({ min: 5 })
+  check('email').isEmail()
+  // check('psw').isLength({ min: 5 })
   ],function(req, res){
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
