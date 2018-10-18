@@ -45,7 +45,7 @@ docker exec -it training_r1_db_1 mysql -uroot -p
   `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';`
 - [Clear docker compose volumes](https://github.com/docker-library/mysql/issues/51)
   docker-compose does extra work to preserve volumes between runs (thus preserving the database); you may want to try `docker-compose rm -v` to delete everything and try starting it up again.
-
+- docker unauthorized problem, type `docker login`
 
 
 
