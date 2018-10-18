@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const connection = require('../db.js').connection;
 const { check, validationResult } = require('express-validator/check');
-var md5 = require("blueimp-md5");
-
+const md5 = require("blueimp-md5");
+const path = require('path');
 
 //click signIn button
 router.post('/login', [
@@ -118,5 +118,11 @@ router.delete('/users/(:id)', function(req, res){
   res.json({ message: `Successfully deleted ${req.params.id}` });
 })
 
+router.get('/download/:file(*)',(req, res) => {
+  var file = req.params.file;
+  var fileLocation = path.join('./uploads',file);
+  // console.log(fileLocation);
+  res.download(fileLocation, file); 
+});
 
 module.exports = router;

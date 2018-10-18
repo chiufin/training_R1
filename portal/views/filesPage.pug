@@ -6,6 +6,12 @@ block content
   div(id="filePage" class="page")
     h1 File List
     button#uploadFileBtn(class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect") Upload File
+
+    form(action="files" method="post" enctype="multipart/form-data")
+      input(type="file" name="filetoupload")
+      input(type="submit")
+
+    a(href="api/download/stacccy.jpg") download
     //- ul(class="mdl-list")
     //-     each val, i in files
     //-         li(class="mdl-list__item")
