@@ -44,10 +44,7 @@ router.post('/login', [
 
 //logout
 router.get('/logout', function(req, res){
-  console.log('----- lo')
-  res.clearCookie('account', {path:'/'});
-  res.clearCookie('password', {path:'/'});
-  
+  req.session.destroy();  
   res.json({'logout': true})
 })
 
