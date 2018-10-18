@@ -11,6 +11,6 @@ CREATE TABLE user
 
 
 INSERT INTO user ( name, email, psw ) VALUES
-  ( 'Stacy', 'stacy.chen@innovasolutions.com', MD5('stacy') ),
-  ( 'Wilson', 'wilson.chen@innovasolutions.com', MD5('wilson') ),
-  ( 'Jason', 'jason.chen@innvovasolutions.com', MD5('jason') );
+  ( 'Stacy Chen', 'stacy.chen@innovasolutions.com', MD5('stacy') ),
+  ( 'Wilson Chen', 'wilson.chen@innovasolutions.com', MD5('wilson') ),
+  ( 'Jason Chen', 'jason.chen@innvovasolutions.com', MD5('jason') );

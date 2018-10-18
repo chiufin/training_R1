@@ -19,10 +19,16 @@ router.post('/login', [
     try{
       connection.query(`SELECT * FROM user WHERE email=${JSON.stringify(req.body.account)}`, function(err, result, fields) {
         if (err) throw err; 
+        console.log(result)
+        console.log(result.length > 0)
+        console.log(result[0].psw)
+        console.log(md5(req.body.psw))
         if(result.length > 0 && result[0].psw == md5(req.body.psw)){
             //set cookie
-            res.cookie('account', req.body.account, { path: '/', signed: true})
-            res.cookie('password', req.body.psw, { path: '/', signed: true})
+            // res.cookie('email', req.body.account, { path: '/', signed: true})
+            // res.cookie('password', req.body.psw, { path: '/', signed: true})
+
+            req.session.name = result[0].name
             res.json({login: true})
         }else{
             res.json({login: false})
