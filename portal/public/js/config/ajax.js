@@ -50,5 +50,11 @@ var api = {
     },
     uploadFile: function(){},
     getFile: function(){},
-    deleteFile: function(){},
+    deleteFile: function(payload, callback){
+        $.ajax({
+            type: "DELETE",
+            url: `api/deleteFile/${encodeURI(payload)}`
+        })
+        .done(callback);
+    }
 }

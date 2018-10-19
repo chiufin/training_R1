@@ -149,4 +149,13 @@ router.get('/download/:file(*)',(req, res) => {
   res.download(fileLocation, file); 
 });
 
+
+//delete certain file
+router.delete('/deleteFile/:file(*)',(req, res) => {
+  fs.unlink(`./uploads/${req.params.file}`, function (err) {
+    if (err) throw err;
+    res.json({ message: `Successfully deleted file` });
+  }); 
+});
+
 module.exports = router;
