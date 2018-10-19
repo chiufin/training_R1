@@ -3,7 +3,9 @@ extends layout
 block content
   if ifLogin
     h1 Welcome, What is your main focus for today?
-    a(href='/users') user management 
+    a(href='/users') user 
+    br
+    a(href='/files') file
     br
     a(href='/api/logout') Log out
   else 

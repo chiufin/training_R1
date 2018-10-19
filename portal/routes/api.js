@@ -128,7 +128,9 @@ router.delete('/users/(:id)', function(req, res){
 router.post('/uploadFile', upload.single('filetoupload'), function (req, res, next) {
   console.log('upload File ....')
   var tmp_path = req.file.path;
+  console.log(tmp_path)
   var target_path = 'uploads/' + req.file.originalname;
+  console.log(target_path)
   var src = fs.createReadStream(tmp_path);
   var dest = fs.createWriteStream(target_path);
   src.pipe(dest);
@@ -145,7 +147,6 @@ router.post('/uploadFile', upload.single('filetoupload'), function (req, res, ne
 router.get('/download/:file(*)',(req, res) => {
   var file = req.params.file;
   var fileLocation = path.join('./uploads',file);
-  // console.log(fileLocation);
   res.download(fileLocation, file); 
 });
 
