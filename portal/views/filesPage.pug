@@ -10,18 +10,23 @@ block content
     form(action="api/uploadFile" method="post" enctype="multipart/form-data")
       input(type="file" name="filetoupload")
       input(type="submit")
-
     a(href="api/download/stacccy.jpg") download
-    //- ul(class="mdl-list")
-    //-     each val, i in files
-    //-         li(class="mdl-list__item")
-    //-             div(class="list") 
-    //-                 p(class="id")  #{val.id}
-    //-                 p #{val.name} 
-    //-                 p #{val.email}
-    //-             button(class="edit mdl-button mdl-js-button mdl-button--icon") 
-    //-                 div(id="modify_user"+i class="icon material-icons") edit
-    //-                 div(class="mdl-tooltip" data-mdl-for="modify_user"+i) edit
-    //-             button(class="delete mdl-button mdl-js-button mdl-button--icon") 
-    //-                 div(id="delete_user"+i class="icon material-icons") delete
-    //-                 div(class="mdl-tooltip" data-mdl-for="delete_user"+i) delete
+
+    table(class="mdl-data-table mdl-js-data-table")
+      thead
+        tr
+          th(class="mdl-data-table__cell--non-numeric") Name
+          th(class="mdl-data-table__cell--non-numeric") Download
+          th(class="mdl-data-table__cell--non-numeric") Delete
+      tbody
+        each val, i in files
+          tr
+            td(class="id mdl-data-table__cell--non-numeric") #{val}
+            td(class="mdl-data-table__cell--non-numeric") 
+              button(class="download mdl-button mdl-js-button mdl-button--icon") 
+                div(id="download_file"+i class="icon material-icons") edit
+                div(class="mdl-tooltip" data-mdl-for="download_file"+i) edit
+            td(class="mdl-data-table__cell--non-numeric")
+              button(class="delete mdl-button mdl-js-button mdl-button--icon") 
+                div(id="delete_file"+i class="icon material-icons") delete
+                div(class="mdl-tooltip" data-mdl-for="delete_file"+i) delete
