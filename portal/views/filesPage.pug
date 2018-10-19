@@ -23,9 +23,10 @@ block content
           tr
             td(class="id mdl-data-table__cell--non-numeric") #{val}
             td(class="mdl-data-table__cell--non-numeric") 
-              button(class="download mdl-button mdl-js-button mdl-button--icon") 
-                div(id="download_file"+i class="icon material-icons") edit
-                div(class="mdl-tooltip" data-mdl-for="download_file"+i) edit
+              a(href=`api/download/${val}`) download
+              //- button(class="download mdl-button mdl-js-button mdl-button--icon") 
+              //-   div(id="download_file"+i class="icon material-icons") edit
+              //-   div(class="mdl-tooltip" data-mdl-for="download_file"+i) edit
             td(class="mdl-data-table__cell--non-numeric")
               button(class="delete mdl-button mdl-js-button mdl-button--icon") 
                 div(id="delete_file"+i class="icon material-icons") delete
