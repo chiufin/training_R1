@@ -4,6 +4,9 @@ const connection = require('../db.js').connection;
 const { check, validationResult } = require('express-validator/check');
 const md5 = require("blueimp-md5");
 const path = require('path');
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
+const fs = require('fs');
 
 //click signIn button
 router.post('/login', [
@@ -121,6 +124,24 @@ router.delete('/users/(:id)', function(req, res){
   res.json({ message: `Successfully deleted ${req.params.id}` });
 })
 
+//upload file
+router.post('/uploadFile', upload.single('filetoupload'), function (req, res, next) {
+  console.log('upload File ....')
+  var tmp_path = req.file.path;
+  var target_path = 'uploads/' + req.file.originalname;
+  var src = fs.createReadStream(tmp_path);
+  var dest = fs.createWriteStream(target_path);
+  src.pipe(dest);
+
+
+  src.on('end', function() { res.json({ message: `Successfully upload file` }) });
+  src.on('error', function(err) { res.json({ message: `Error upload file` }) });
+  // req.file is the `avatar` file
+  // req.body will hold the text fields, if there were any
+})
+
+
+//download certain file
 router.get('/download/:file(*)',(req, res) => {
   var file = req.params.file;
   var fileLocation = path.join('./uploads',file);
