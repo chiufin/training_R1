@@ -8,7 +8,7 @@ block content
     //- button#uploadFileBtn(class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect") Upload File
 
     form(action="api/uploadFile" method="post" enctype="multipart/form-data")
-      input(type="file" name="filetoupload")
+      input(type="file" name="filetoupload" )
       input(type="submit")
 
     if files.length <= 0
@@ -25,10 +25,9 @@ block content
             tr
               td(class="file_name mdl-data-table__cell--non-numeric") #{val}
               td(class="mdl-data-table__cell--non-numeric") 
-                a(href=`api/download/${val}`) download
-                //- button(class="download mdl-button mdl-js-button mdl-button--icon") 
-                //-   div(id="download_file"+i class="icon material-icons") edit
-                //-   div(class="mdl-tooltip" data-mdl-for="download_file"+i) edit
+                button(class="download mdl-button mdl-js-button mdl-button--icon") 
+                  div(id="download_file"+i class="icon material-icons") cloud_download
+                  div(class="mdl-tooltip" data-mdl-for="download_file"+i) download
               td(class="mdl-data-table__cell--non-numeric")
                 button(class="delete mdl-button mdl-js-button mdl-button--icon") 
                   div(id="delete_file"+i class="icon material-icons") delete

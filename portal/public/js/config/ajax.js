@@ -49,7 +49,25 @@ var api = {
         .done(callback);
     },
     uploadFile: function(){},
-    getFile: function(){},
+    downloadFile: function(payload, callback){
+        $.ajax({
+            type: "GET",
+            url: `api/download//${encodeURI(payload)}`,
+            xhrFields: {
+                responseType: 'blob'
+            },
+            success: function (data) {
+                console.log(data)
+                var a = document.createElement('a');
+                var url = window.URL.createObjectURL(data);
+                console.log(url)
+                a.href = url;
+                a.download = `${payload}`;
+                a.click();
+                window.URL.revokeObjectURL(url);
+            }
+        })
+    },
     deleteFile: function(payload, callback){
         $.ajax({
             type: "DELETE",

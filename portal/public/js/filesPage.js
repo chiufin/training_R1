@@ -9,4 +9,13 @@ $( document ).ready(function() {
         }
         api.deleteFile(payload, callback)
     });
+
+    //download
+    $("#filePage .download").click(function() {
+        var index = $("#filePage .download").index(this)
+
+        var payload = $("#filePage .file_name")[index].textContent
+        api.downloadFile(payload)
+    });
+
 });
