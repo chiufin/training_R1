@@ -4,9 +4,20 @@ const connection = require('../db.js').connection;
 const { check, validationResult } = require('express-validator/check');
 const md5 = require("blueimp-md5");
 const path = require('path');
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+// const upload = multer({ dest: 'uploads/' })
 const fs = require('fs');
+const multer  = require('multer')
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+})
+
+var upload = multer({ storage: storage })
 
 //click signIn button
 router.post('/login', [
@@ -126,17 +137,7 @@ router.delete('/users/(:id)', function(req, res){
 
 //upload file
 router.post('/uploadFile', upload.single('filetoupload'), function (req, res, next) {
-  var tmp_path = req.file.path;
-  var target_path = 'uploads/' + req.file.originalname;
-  var src = fs.createReadStream(tmp_path);
-  var dest = fs.createWriteStream(target_path);
-  src.pipe(dest);
-
-
-  src.on('end', function() { res.json({ message: `Successfully upload file` }) });
-  src.on('error', function(err) { res.json({ message: `Error upload file` }) });
-  // req.file is the `avatar` file
-  // req.body will hold the text fields, if there were any
+  res.json({ message: `Successfully update file` });
 })
 
 

@@ -43,7 +43,7 @@ docker exec -it training_r1_db_1 mysql -uroot -p
 - [Clear docker compose volumes](https://github.com/docker-library/mysql/issues/51)
   docker-compose does extra work to preserve volumes between runs (thus preserving the database); you may want to try `docker-compose rm -v` to delete everything and try starting it up again.
 - docker unauthorized problem, type `docker login`
-
+- [duplicate uploaded files](https://stackoverflow.com/questions/32045027/multer-callbacks-not-working)
 
 
 # 本地端 連 mysql container 
