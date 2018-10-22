@@ -3,9 +3,9 @@ require('dotenv').config()
 
 const detectOS = function(){
     if(process.platform === "win32"){
-        return process.env.DEV_DB_WINDOW7
+        return process.env.DEV_DB_WINDOWS
     }else{
-        return process.env.DEV_DB_MAC
+        return process.env.DEV_DB
     }
 }
 
@@ -18,14 +18,14 @@ const detectENV = function(){
         case 'prd':
             return process.env.PROD_DB
         default:
-            return;
+            return 'localhost';
     }
 }
 
 const connection = mysql.createConnection({
     host     : detectENV(),
-    user     : process.env.DB_USER,
-    password : process.env.DB_PASSWORD,
+    user     : process.env.DB_USER || 'root',
+    password : process.env.DB_PASSWORD || 'password',
     database : 'training_r1'
 });
 connection.connect();
