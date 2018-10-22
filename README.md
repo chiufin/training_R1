@@ -1,13 +1,53 @@
 # Traning R1 - warm up
 
-## Getting Started
+## Getting Started in development
+
 ```
 cd portal
+npm run dev
+
+sh start-mysql.sh
+```
+
+## Setting DB ENV for development, staging, production
+create `portal/.env` 
+```
+DEV_DB=localhost
+DEV_DB_WINDOWS=192.168.99.100
+STG_DB=staging.example.host
+PROD_DB=staging.example.host
+
+DB_USER=root
+DB_PASSWORD=password
+
+```
+0. Default Setting
+
+    db: `localhost`
+
+    db user: `root`
+
+    db password: `password`
+
+1. Development / Staging / Prodcution
+
+    db: `DEV_DB` / `STG_DB` / `PROD_DB` ( /`DEV_DB_WINDOWS` )
+
+    db user: `DB_USER`
+
+    db password: `DB_PASSWORD`
+
+
+
+
+for docker 
+```
 docker build -t training-r1 .
 docker run -p 3000:3000 training-r1 
 docker-machine ip default
 open [ip]:3000
 ```
+
 
 ## Docker-machine default reset
 windows `. ./docker-machine.sh`
