@@ -18,4 +18,17 @@ $( document ).ready(function() {
         api.downloadFile(payload)
     });
 
+    //upload
+    $("#filePage .upload").submit(function(e) {
+        e.preventDefault();
+        var payload = new FormData($(this)[0])
+        var successCallback = function(){
+            window.location = '/files'
+        }
+        var errorCallback = function(){
+            console.log('upload file error callback')
+        }
+        api.uploadFile(payload, successCallback, errorCallback)
+    });
+
 });

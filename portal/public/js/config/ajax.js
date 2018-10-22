@@ -48,8 +48,20 @@ var api = {
         })
         .done(callback);
     },
-    uploadFile: function(){},
-    downloadFile: function(payload, callback){
+    uploadFile: function(formData, successCallback, errorCallback){
+        $.ajax({
+            type: 'POST',
+            url: 'api/uploadFile',
+            data: formData,
+            enctype: 'multipart/form-data',
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: successCallback,
+            error: errorCallback
+        });
+    },
+    downloadFile: function(payload){
         $.ajax({
             type: "GET",
             url: `api/download//${encodeURI(payload)}`,
