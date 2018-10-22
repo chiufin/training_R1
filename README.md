@@ -80,7 +80,7 @@ cd /usr/local/mysql/bin/
 - [Character Entity Reference Chart](https://dev.w3.org/html5/html-author/charref)
 - [DB schema - data type](http://www.tutorialspoint.com/mysql/mysql-data-types.htm)
 - [Aws microservice tutorial](https://aws.amazon.com/tw/getting-started/container-microservices-tutorial/)
-
+- `alias dk='docker'`
 
 # Objective:
 Training to get familiar with JQuery/ExpressJS/Pug/Docker
