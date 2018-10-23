@@ -1,4 +1,12 @@
 include ../mixins/modal.pug
+include ../mixins/input.pug
+include ../mixins/coloredBtn.pug
 
 +modal('createUserModal', 'Create User')
-    
+    +input('create_user_name', 'input', 'Name')
+    +input('create_user_email', 'input', 'Email')
+    +input('create_user_psw', 'password', 'Password')
+    +input('create_user_psw_confirm', 'password', 'Confirm Password')
+        span(class="error-psw-msg mdl-textfield__error") Password should be the same  
+        span(class="error-msg mdl-textfield__error") Invalid input. Please try again. 
+    //- +coloredBtn('Create','submit')

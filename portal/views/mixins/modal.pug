@@ -1,29 +1,8 @@
-//- mixin input(id='create_user_name', type='input', label='Name')
-//-     div(class="mdl-textfield mdl-js-textfield")
-//-         label(for=id class="mdl-textfield__label") Name
-//-         input(type=type id=id class="mdl-textfield__input")
-
-
-
 mixin modal(mainID='createUserModal', mainTitle='Create User')
     div(id=mainID class="modal")
         div(class='modal_content')
             h1=mainTitle 
-                //- +input('create_user_name','input','Name')
-                div(class="mdl-textfield mdl-js-textfield")
-                    label(for='create_user_name' class="mdl-textfield__label") Name
-                    input(type='input' id='create_user_name' class="mdl-textfield__input")
-                div(class="mdl-textfield mdl-js-textfield")
-                    label(for='create_user_email' class="mdl-textfield__label") Email
-                    input(type='input' id='create_user_email' class="mdl-textfield__input")
-                div(class="mdl-textfield mdl-js-textfield")
-                    label(for='create_user_psw' class="mdl-textfield__label") Password
-                    input(type='password' id='create_user_psw' class="mdl-textfield__input")
-                div(class="mdl-textfield mdl-js-textfield")
-                    label(for='create_user_psw_confirm' class="mdl-textfield__label") Confirm Password
-                    input(type='password' id='create_user_psw_confirm' class="mdl-textfield__input")
-                    span(class="error-psw-msg mdl-textfield__error") Password should be the same  
-                    span(class="error-msg mdl-textfield__error") Invalid input. Please try again. 
+                block 
                 div
                     button(class="submit mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent") Create
             button#closeCreateUserPanel(class="modal_close mdl-button mdl-js-button mdl-button--icon") 

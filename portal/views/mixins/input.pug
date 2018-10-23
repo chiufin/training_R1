@@ -1,0 +1,5 @@
+mixin input(id='create_user_name', type='input', label='Name')
+    div(class="mdl-textfield mdl-js-textfield")
+        label(for=id class="mdl-textfield__label") #{label}
+        input(type=type id=id class="mdl-textfield__input")
+        block
