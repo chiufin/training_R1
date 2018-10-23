@@ -9,9 +9,13 @@ npm run dev (/stg/prod)
 sh start-mysql.sh
 ```
 
-## Setting DB ENV for development, staging, production
+## Setting ENV
+for DB development, staging, production and session secret
+
 create `portal/.env` 
 ```
+SESSION_SECRET=123
+
 DEV_DB=localhost
 DEV_DB_WINDOWS=192.168.99.100
 STG_DB=staging.example.host
@@ -23,6 +27,8 @@ DB_PASSWORD=password
 ```
 0. Default Setting
 
+    session secret: `'123'`
+
     db: `localhost`
 
     db user: `root`
@@ -30,6 +36,8 @@ DB_PASSWORD=password
     db password: `password`
 
 1. Development / Staging / Prodcution
+
+    session secret: `SESSION_SECRET`
 
     db: `DEV_DB` / `STG_DB` / `PROD_DB` ( /`DEV_DB_WINDOWS` )
 
@@ -131,8 +139,8 @@ implement file upload/downlod function with jquery/nodejs
 
 ```
 docker build -t training-r1 .
-docker run -p 3000:3000 training-r1 
-open localhost:3000 (/docker-machineIP:3000)
+docker run -p 3000:3000 docker run --env VAR1=value1 training-r1 
+open localhost:3000
 ```
 
 ## Mysql
