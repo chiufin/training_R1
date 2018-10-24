@@ -4,7 +4,7 @@ $( document ).ready(function() {
     $("#filePage .delete").click(function() {
         var index = $("#filePage .delete").index(this)
         var payload = $("#filePage .file_name")[index].textContent
-        var callback = function( msg ) {
+        var callback = function() {
             window.location = '/files'
         }
         api.deleteFile(payload, callback)
