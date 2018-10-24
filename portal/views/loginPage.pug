@@ -1,5 +1,8 @@
 extends layout
 
+include ./mixins/input.pug
+include ./mixins/coloredBtn.pug
+
 block content
   if ifLogin
     h1 Welcome, What is your main focus for today?
@@ -11,13 +14,8 @@ block content
   else 
    div#loginPage
     h1 Login
-    div(class="mdl-textfield mdl-js-textfield")
-      label(for='account' class="mdl-textfield__label") Email
-      input(type='input' id='account' class="mdl-textfield__input")
+    +input('account', 'input', 'Email')
     br
-    div(class="mdl-textfield mdl-js-textfield")
-      label(for='password' class="mdl-textfield__label") Password
-      input(type='password' id='password' class="mdl-textfield__input")
+    +input('password', 'password', 'Password')
       span(class="error-msg mdl-textfield__error") Invalid input. Please try again. 
-    div
-      button(class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent") Log in
+    +coloredBtn('Log in')

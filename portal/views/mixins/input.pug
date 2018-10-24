@@ -3,3 +3,9 @@ mixin input(id='create_user_name', type='input', label='Name')
         label(for=id class="mdl-textfield__label") #{label}
         input(type=type id=id class="mdl-textfield__input")
         block
+
+mixin dirtyInput(id='create_user_name', type='input', label='Name')
+    div(class="dirty-input mdl-textfield mdl-js-textfield")
+        label(for=id class="mdl-textfield__label") #{label}
+        input(type=type id=id class="mdl-textfield__input")
+        block

@@ -11,8 +11,6 @@ router.get('/', function(req, res, next) {
   }else{
     return res.redirect('/login')
   }
-  
-
 });
 
 router.get('/post', function(req, res, next) {

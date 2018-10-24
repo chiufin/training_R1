@@ -6,14 +6,13 @@ $( document ).ready(function() {
         var id =  $('.id')[index].textContent;
         var payload = { id }
         var callback = function( res ) {
-            console.log(res)
             if(res.updated_time){
                 $(".time").text(`Updated Time: ${changeToTaipeiTime(res.updated_time)}`)
             }else{
                 $(".time").text(`Created Time: ${changeToTaipeiTime(res.created_time)}`)
             }
 
-            $("#updateUserModal").find('.input').addClass('is-dirty')
+            $("#updateUserModal").find('.dirty-input').addClass('is-dirty')
             $("#update_user_id").val(res.id)
             $("#update_user_name").val(res.name)
             $("#update_user_email").val(res.email)
@@ -22,21 +21,20 @@ $( document ).ready(function() {
     });
 
 
-    $("#updateUserBtn").click(function() {
-        if($("#updateUserModal").find("input")[3].value !== $("#updateUserModal").find("input")[4].value){
+    $("#updateUserModal").find(".submit").click(function() {
+        if($("#update_user_password")[0].value !== $("#update_user_password_confirm")[0].value){
             $("#updateUserModal").find(".error-psw-msg").css({ visibility: 'visible' })
         }else{
             var payload = {
-                id: $("#updateUserModal").find("input")[0].value,
+                id: $("#update_user_id")[0].value,
                 body: {
-                    name: $("#updateUserModal").find("input")[1].value,
-                    email: $("#updateUserModal").find("input")[2].value,
-                    psw: $("#updateUserModal").find("input")[3].value
+                    name: $("#update_user_name")[0].value,
+                    email: $("#update_user_email")[0].value,
+                    psw: $("#update_user_password")[0].value
                 }
             }
     
             var successCallback = function( msg ) {
-                console.log(msg)
                 if(msg){
                     window.location = '/users'
                 }else{
@@ -44,7 +42,6 @@ $( document ).ready(function() {
                 }
             }
             var errorCallback = function( msg ) {
-                console.log(msg)
                 $("#updateUserModal").find(".error-msg").css({ visibility: 'visible' })
             }
             api.updateUser(payload, successCallback, errorCallback)
