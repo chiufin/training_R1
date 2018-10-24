@@ -1,3 +1,5 @@
+include ../mixins/btns.pug
+
 header
     header(class="mdl-layout__header")
         div(class="mdl-layout__header-row")
@@ -9,9 +11,6 @@ header
             nav(class="mdl-navigation")
                 div(class="icon material-icons") account_circle&nbsp;
                 span #{userName} &nbsp;&nbsp;
-                //- a(class="mdl-navigation__link" href="/api/logout") Log out
-                button(class="logout mdl-button mdl-js-button mdl-button--icon") 
-                    div(id="logout_header" class="logout icon material-icons") arrow_forward_ios
-                    div(class="mdl-tooltip" data-mdl-for="logout_header") logout
-
+                +iconBtn('logout', 'logout_header', 'arrow_forward_ios', 'logout')
+               
 

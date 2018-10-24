@@ -1,5 +1,7 @@
 extends layout
 
+include ./mixins/table.pug
+
 block content
   include components/header.pug
   include components/createUserModal.pug
@@ -8,28 +10,27 @@ block content
     h1 User list
     button#createUser(class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect") Create User
     br
-    table(class="mdl-data-table mdl-js-data-table")
+    +table()
         thead
             tr
-                th(class="mdl-data-table__cell--non-numeric") Id
-                th(class="mdl-data-table__cell--non-numeric") Name
-                th(class="mdl-data-table__cell--non-numeric") Email
-                th(class="mdl-data-table__cell--non-numeric") Edit
-                th(class="mdl-data-table__cell--non-numeric") Delete
+                +th('Id')
+                +th('Name')
+                +th('Email')
+                +th('Edit')
+                +th('Delete')
         tbody
             each val, i in users
                 tr
-                    td(class="id mdl-data-table__cell--non-numeric") #{val.id}
-                    td(class="mdl-data-table__cell--non-numeric") #{val.name} 
-                    td(class="mdl-data-table__cell--non-numeric") #{val.email}
-                    td(class="mdl-data-table__cell--non-numeric") 
+                    +td(val.id)
+                    +td(val.name)
+                    +td(val.email)
+                    +td()
                         button(class="edit mdl-button mdl-js-button mdl-button--icon") 
                             div(id="modify_user"+i class="icon material-icons") edit
                             div(class="mdl-tooltip" data-mdl-for="modify_user"+i) edit
-                    td(class="mdl-data-table__cell--non-numeric")
+                    +td()
                         button(class="delete mdl-button mdl-js-button mdl-button--icon") 
                             div(id="delete_user"+i class="icon material-icons") delete
                             div(class="mdl-tooltip" data-mdl-for="delete_user"+i) delete
 
-
-    //- include components/footer.pug
+    
