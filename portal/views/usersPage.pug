@@ -1,6 +1,7 @@
 extends layout
 
 include ./mixins/table.pug
+include ./mixins/btns.pug
 
 block content
   include components/header.pug
@@ -8,9 +9,9 @@ block content
   include components/updateUserModal.pug
   div(id="users" class="page")
     h1 User list
-    button#createUser(class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect") Create User
+    +grayBtn('createUser', 'Create User')
     br
-    +table()
+    table(class="mdl-data-table mdl-js-data-table")
         thead
             tr
                 +th('Id')
