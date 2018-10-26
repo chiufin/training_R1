@@ -28,23 +28,20 @@ router.post('/login', [
     return res.status(422).json({ errors: errors.array() });
   }
   
-  if(req.body.account && req.body.psw){
-    try{
-      connection.query(`SELECT * FROM user WHERE email="${req.body.account}"`, function(err, result, fields) {
-        if (err) throw err; 
-        if(result.length > 0 && result[0].psw == md5(req.body.psw)){
-            req.session.name = result[0].name
-            res.json({login: true})
-        }else{
-            res.json({login: false})
-        }
-      });
-    }catch(err){
-      res.json({login: false})
-    }
-  }else{
+  try{
+    connection.query(`SELECT * FROM user WHERE email="${req.body.account}"`, function(err, result, fields) {
+      if (err) throw err; 
+      if(result.length > 0 && result[0].psw == md5(req.body.psw)){
+          req.session.name = result[0].name
+          res.json({login: true})
+      }else{
+          res.json({login: false})
+      }
+    });
+  }catch(err){
     res.json({login: false})
   }
+  
 })
 
 //logout
