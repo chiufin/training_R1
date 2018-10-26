@@ -4,11 +4,10 @@ const connection = require('../db.js').connection;
 const { check, validationResult } = require('express-validator/check');
 const md5 = require("blueimp-md5");
 const path = require('path');
-// const upload = multer({ dest: 'uploads/' })
 const fs = require('fs');
 const multer  = require('multer')
 
-var storage = multer.diskStorage({
+const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'uploads/')
   },
@@ -17,7 +16,7 @@ var storage = multer.diskStorage({
   }
 })
 
-var upload = multer({ storage: storage })
+const upload = multer({ storage: storage })
 
 //click signIn button
 router.post('/login', [
@@ -33,15 +32,7 @@ router.post('/login', [
     try{
       connection.query(`SELECT * FROM user WHERE email=${JSON.stringify(req.body.account)}`, function(err, result, fields) {
         if (err) throw err; 
-        console.log(result)
-        console.log(result.length > 0)
-        console.log(result[0].psw)
-        console.log(md5(req.body.psw))
         if(result.length > 0 && result[0].psw == md5(req.body.psw)){
-            //set cookie
-            // res.cookie('email', req.body.account, { path: '/', signed: true})
-            // res.cookie('password', req.body.psw, { path: '/', signed: true})
-
             req.session.name = result[0].name
             res.json({login: true})
         }else{
@@ -91,7 +82,6 @@ router.get('/users/(:id)', function(req, res){
       if (err) throw err;
       res.json(result[0]);
     });
-    
   }catch(err){
     console.log(err)
   }
@@ -101,7 +91,6 @@ router.get('/users/(:id)', function(req, res){
 router.put('/users/(:id)', [
   check('name').isLength({ min: 1 }),
   check('email').isEmail()
-  // check('psw').isLength({ min: 5 })
   ],function(req, res){
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -118,7 +107,7 @@ router.put('/users/(:id)', [
           if (err) throw err;
         });
       }catch(err){
-        console.log(err)
+        console.warn(err)
       }
       res.json({ message: `Successfully updated ${req.params.id}` });
 })
@@ -130,7 +119,7 @@ router.delete('/users/(:id)', function(req, res){
       if (err) throw err;
     });
   }catch(err){
-    console.log(err)
+    console.warn(err)
   }
   res.json({ message: `Successfully deleted ${req.params.id}` });
 })

@@ -1,13 +1,16 @@
 var express = require('express');
 var router = express.Router();
-var connection = require('../db.js').connection;
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
+  let ifLogin = false
   if(req.session.name){
-    res.render('loginPage', { ifLogin: true });
-  }else{
-    res.render('loginPage', { ifLogin: false });
+    ifLogin = true
   }
+  res.render('loginPage', { ifLogin });
 });
+
+router.post('/', function(req, res, next){
+
+})
 
 module.exports = router;
