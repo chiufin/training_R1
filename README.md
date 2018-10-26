@@ -89,6 +89,7 @@ cd /usr/local/mysql/bin/
 - [DB schema - data type](http://www.tutorialspoint.com/mysql/mysql-data-types.htm)
 - [Aws microservice tutorial](https://aws.amazon.com/tw/getting-started/container-microservices-tutorial/)
 - `alias dk='docker'`
+- [console level](http://jason-wang.logdown.com/posts/422236-chrome-console-api-tips)
 
 # Objective:
 Training to get familiar with JQuery/ExpressJS/Pug/Docker

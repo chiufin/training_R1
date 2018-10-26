@@ -30,7 +30,7 @@ router.post('/login', [
   
   if(req.body.account && req.body.psw){
     try{
-      connection.query(`SELECT * FROM user WHERE email=${JSON.stringify(req.body.account)}`, function(err, result, fields) {
+      connection.query(`SELECT * FROM user WHERE email="${req.body.account}"`, function(err, result, fields) {
         if (err) throw err; 
         if(result.length > 0 && result[0].psw == md5(req.body.psw)){
             req.session.name = result[0].name
@@ -59,31 +59,31 @@ router.post('/users', [
   check('password').isLength({ min: 5 })
   ],function(req, res){
 
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
-    }
-    try{
-      var insertQuery = `INSERT INTO user ( name, email, psw) VALUES ( ${JSON.stringify(req.body.name)}, ${JSON.stringify(req.body.email)}, ${JSON.stringify(md5(req.body.password))} )`
-      connection.query( insertQuery, function(err, results, fields) {
-        if (err) throw err;
-        res.json({updateUser: true})
-      });
-    }catch(err){
-      res.json({updateUser: false})
-      console.log(err)
-    }
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+  try{
+    var insertQuery = `INSERT INTO user ( name, email, psw) VALUES ( "${req.body.name}", "${req.body.email}", "${md5(req.body.password)}" )`
+    connection.query( insertQuery, function(err, results, fields) {
+      if (err) throw err;
+      res.json({updateUser: true})
+    });
+  }catch(err){
+    res.json({updateUser: false})
+    console.warn(err)
+  }
 })
 
 //get certain user
 router.get('/users/(:id)', function(req, res){
   try{
-    connection.query(`SELECT * FROM user WHERE id=${JSON.stringify(req.params.id)}`, function(err, result, fields) {
+    connection.query(`SELECT * FROM user WHERE id="${req.params.id}"`, function(err, result, fields) {
       if (err) throw err;
       res.json(result[0]);
     });
   }catch(err){
-    console.log(err)
+    console.warn(err)
   }
 })
 
@@ -96,26 +96,24 @@ router.put('/users/(:id)', [
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
-      var data = {
-        name: JSON.stringify(req.body.name),
-        email: JSON.stringify(req.body.email),
-        psw: JSON.stringify(md5(req.body.psw)),
-        id: JSON.stringify(req.params.id)
-      }
-      try{
-        connection.query(`UPDATE user SET name=${data.name},email=${data.email},psw=${data.psw},updated_time=CURRENT_TIMESTAMP WHERE id=${data.id}`, function(err, results, fields) {
-          if (err) throw err;
-        });
-      }catch(err){
-        console.warn(err)
-      }
-      res.json({ message: `Successfully updated ${req.params.id}` });
+    let queryString = ""
+    queryString += req.body.name && `name="${req.body.name}"`
+    queryString += req.body.email && `,email="${req.body.email}"`
+    queryString += req.body.psw && `,psw="${md5(req.body.psw)}"`
+    try{
+      connection.query(`UPDATE user SET ${queryString},updated_time=CURRENT_TIMESTAMP WHERE id="${req.params.id}"`, function(err, results, fields) {
+        if (err) throw err;
+      });
+    }catch(err){
+      console.warn(err)
+    }
+    res.json({ message: `Successfully updated ${req.params.id}` });
 })
 
 //delete user
 router.delete('/users/(:id)', function(req, res){
   try{
-    connection.query(`DELETE FROM user WHERE id=${req.params.id}`, function(err, results, fields) {
+    connection.query(`DELETE FROM user WHERE id="${req.params.id}"`, function(err, results, fields) {
       if (err) throw err;
     });
   }catch(err){
