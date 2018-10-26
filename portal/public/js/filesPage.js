@@ -26,7 +26,7 @@ $( document ).ready(function() {
             window.location = '/files'
         }
         var errorCallback = function(){
-            console.log('upload file error callback')
+            console.warn('upload file error callback')
         }
         api.uploadFile(payload, successCallback, errorCallback)
     });

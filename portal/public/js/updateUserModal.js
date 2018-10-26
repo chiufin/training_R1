@@ -41,7 +41,7 @@ $( document ).ready(function() {
                     $("#updateUserModal").find(".error-msg").css({ visibility: 'visible' })
                 }
             }
-            var errorCallback = function( msg ) {
+            var errorCallback = function() {
                 $("#updateUserModal").find(".error-msg").css({ visibility: 'visible' })
             }
             api.updateUser(payload, successCallback, errorCallback)

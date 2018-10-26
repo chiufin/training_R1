@@ -1,21 +1,21 @@
 $( document ).ready(function() {
 
     $("#createUserModal").find(".submit").click(function(){
-        if($("#createUserModal").find("input")[2].value !== $("#createUserModal").find("input")[3].value){
+        if($("#create_user_psw")[0].value !== $("#create_user_psw_confirm")[0].value){
             $("#createUserModal").find(".error-psw-msg").css({ visibility: 'visible' })
         }else{
             var payload = { 
                 body: {
-                    name: $("#createUserModal").find("input")[0].value,
-                    email: $("#createUserModal").find("input")[1].value,
-                    password: $("#createUserModal").find("input")[2].value,
+                    name: $("#create_user_name")[0].value,
+                    email: $("#create_user_email")[0].value,
+                    password: $("#create_user_psw")[0].value,
                 }
             }
     
-            var successCallback = function( msg ) {
+            var successCallback = function() {
                 window.location = '/users'
             }
-            var errorCallback = function( msg ) {
+            var errorCallback = function() {
                 $("#createUserModal").find(".error-msg").css({ visibility: 'visible' })
             }
             api.createUser(payload, successCallback, errorCallback)

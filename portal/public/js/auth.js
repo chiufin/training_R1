@@ -2,8 +2,8 @@ $( document ).ready(function() {
     $("#loginPage").find("button").click(function() {
         var payload = { 
             body: {
-                account: $("#loginPage").find("input")[0].value,
-                psw: $("#loginPage").find("input")[1].value
+                account: $("#account")[0].value,
+                psw: $("#password")[0].value
             }
         }
         var successCallback = function( msg ) {
