@@ -1,5 +1,5 @@
 var api = {
-    login: function(payload, successCallback, errorCallback){
+    login: function(payload, successCallback){
         $.ajax({
             type: "POST",
             url: `api/login`,
@@ -14,7 +14,6 @@ var api = {
             error: errorCallback
         })
     },
-    // getUserList: function(){},
     getUser: function(payload, callback){
         $.ajax({
             type: "GET",
