@@ -28,19 +28,23 @@ router.post('/login', [
     return res.status(422).json({ errors: errors.array() });
   }
   
-  try{
-    connection.query(`SELECT * FROM user WHERE email="${req.body.account}"`, function(err, result, fields) {
-      if (err) throw err; 
-      if(result.length > 0 && result[0].psw == md5(req.body.psw)){
-          req.session.name = result[0].name
-          res.json({login: true})
-      }else{
-          res.json({login: false})
-      }
-    });
-  }catch(err){
-    res.json({login: false})
-  }
+  new Promise((resolve,reject) => {
+    try{
+      connection.query(`SELECT * FROM user WHERE email="${req.body.account}"`, function(err, result, fields) {
+        if (err) throw err; 
+        if(result.length > 0 && result[0].psw == md5(req.body.psw)){
+            req.session.name = result[0].name
+            resolve()
+        }
+      });
+    }catch(err){
+      console.warn(err)
+    }
+    reject()   
+  })
+  .then(()=>res.json({login: true}))
+  .catch(()=>res.json({login: false}))
+  
   
 })
 

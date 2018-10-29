@@ -4,8 +4,7 @@ var api = {
             type: "POST",
             url: `api/login`,
             data: payload.body,
-            success: successCallback,
-            error: errorCallback
+            success: successCallback
         })
     },
     logout: function(successCallback, errorCallback){
