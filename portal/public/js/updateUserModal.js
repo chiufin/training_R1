@@ -50,7 +50,7 @@ $( document ).ready(function() {
 
 
 
-    $("#updateUserModal").find('.modal_close').click(function() {
+    $("#updateUserModal").find('.modal__close').click(function() {
         $("#updateUserModal").css({ display: 'none' })
     });
 

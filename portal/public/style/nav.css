@@ -1,11 +1,11 @@
-.nav .mdl-navigation__link{
+.nav__link{
     height: 60px;
     line-height: 68px;
     color: #ccc;
     border-bottom: 4px solid transparent;
 }
 
-.nav .mdl-navigation__link:hover{
+.nav__link:hover{
     color: #fff;
     border-bottom: 4px solid #fff;
 }

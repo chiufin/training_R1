@@ -9,7 +9,7 @@
   background: rgba(0, 0, 0, 0.7);
 }
 
-.modal_content{
+.modal__content{
   position: relative;
   margin: 20px auto 0;
   padding: 5px 40px 30px;
@@ -19,7 +19,7 @@
   background: white;
 }
 
-.modal_close{
+.modal__close{
   position: absolute;
   top: 5px;
   right: 5px;

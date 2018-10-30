@@ -28,7 +28,7 @@ $( document ).ready(function() {
         $("#createUserModal").css({ display: 'block' })
     });
 
-    $("#createUserModal").find('.modal_close').click(function() {
+    $("#createUserModal").find('.modal__close').click(function() {
         $("#createUserModal").css({ display: 'none' })
     });
 
