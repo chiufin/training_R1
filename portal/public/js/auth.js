@@ -29,8 +29,8 @@ $( document ).ready(function() {
         var successCallback = function(){
             window.location = '/login'
         }
-        var errorCallback = function(){
-           
+        var errorCallback = function(msg){
+           console.warn(msg)
         }
         api.logout(successCallback, errorCallback)
     })
