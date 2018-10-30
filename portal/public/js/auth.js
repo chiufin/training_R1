@@ -13,7 +13,11 @@ $( document ).ready(function() {
                 $("#loginPage").find(".error-msg").css({ visibility: 'visible' })
             }
         }
-        api.login(payload, successCallback)
+
+        var errorCallback = function(){
+            $("#loginPage").find(".error-msg").css({ visibility: 'visible' })
+        }
+        api.login(payload, successCallback, errorCallback)
     });
 
      //focus and clear error msg

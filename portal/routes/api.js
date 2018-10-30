@@ -33,14 +33,16 @@ router.post('/login', [
       connection.query(`SELECT * FROM user WHERE email="${req.body.account}"`, function(err, result, fields) {
         if (err) throw err; 
         if(result.length > 0 && result[0].psw == md5(req.body.psw)){
-            req.session.name = result[0].name
-            resolve()
+          req.session.name = result[0].name
+          resolve()
+        }else{
+          reject() 
         }
       });
     }catch(err){
       console.warn(err)
-    }
-    reject()   
+      reject() 
+    }  
   })
   .then(()=>res.json({login: true}))
   .catch(()=>res.json({login: false}))
