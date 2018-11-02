@@ -20,8 +20,7 @@ const upload = multer({ storage: storage })
 
 //click signIn button
 router.post('/login', [
-  check('account').isEmail(),
-  check('psw').isLength({ min: 5 })
+  check('account').isEmail()
 ],function(req, res){
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -29,16 +28,15 @@ router.post('/login', [
   }
   var response = { login: false };
   try{
-    connection.query(`SELECT * FROM user WHERE email=${req.body.account}`, function(err, result, fields) {
+    connection.query(`SELECT * FROM user WHERE email="${req.body.account}"`, function(err, result, fields) {
       if(result.length > 0 && result[0].psw == md5(req.body.psw)){
           req.session.name = result[0].name
           response.login = true;
       }
-      res.json(response);
+      res.status(401).json(response);
     });
   }catch(err){
     console.err(err);
-    res.json(err);
   }
   
 })
@@ -60,14 +58,12 @@ router.post('/users', [
     return res.status(422).json({ errors: errors.array() });
   }
   try{
-    var insertQuery = `INSERT INTO user ( name, email, psw) VALUES ( "${req.body.name}", "${req.body.email}", "${md5(req.body.password)}" )`
-    connection.query( insertQuery, function(err, results, fields) {
-      if (err) throw err;
+    connection.query( `INSERT INTO user ( name, email, psw) VALUES ( "${req.body.name}", "${req.body.email}", "${md5(req.body.password)}" )`, function(err, results, fields) {
       res.json({updateUser: true})
     });
   }catch(err){
-    res.json({updateUser: false})
     console.warn(err)
+    res.json({updateUser: false})
   }
 })
 
@@ -75,7 +71,6 @@ router.post('/users', [
 router.get('/users/(:id)', function(req, res){
   try{
     connection.query(`SELECT * FROM user WHERE id="${req.params.id}"`, function(err, result, fields) {
-      if (err) throw err;
       res.json(result[0]);
     });
   }catch(err){
@@ -98,24 +93,26 @@ router.put('/users/(:id)', [
     queryString += req.body.psw && `,psw="${md5(req.body.psw)}"`
     try{
       connection.query(`UPDATE user SET ${queryString},updated_time=CURRENT_TIMESTAMP WHERE id="${req.params.id}"`, function(err, results, fields) {
-        if (err) throw err;
+        res.json({ message: `Successfully updated ${req.params.id}` });
       });
     }catch(err){
       console.warn(err)
+      res.json({ message: `Updated user ${req.params.id} failed!`})
     }
-    res.json({ message: `Successfully updated ${req.params.id}` });
+    
 })
 
 //delete user
 router.delete('/users/(:id)', function(req, res){
   try{
     connection.query(`DELETE FROM user WHERE id="${req.params.id}"`, function(err, results, fields) {
-      if (err) throw err;
+      res.json({ message: `Successfully deleted ${req.params.id}` });
     });
   }catch(err){
     console.warn(err)
+    res.json({ message: `Deleted user ${req.params.id} failed!` });
   }
-  res.json({ message: `Successfully deleted ${req.params.id}` });
+  
 })
 
 //upload file

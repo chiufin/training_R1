@@ -1,5 +1,6 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const axios = require('axios');
 
 router.get('/', function(req, res) {
   let ifLogin = false
@@ -8,9 +9,5 @@ router.get('/', function(req, res) {
   }
   res.render('loginPage', { ifLogin });
 });
-
-router.post('/', function(req, res, next){
-
-})
 
 module.exports = router;
