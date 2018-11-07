@@ -14,22 +14,22 @@ block content
     table(class="mdl-data-table mdl-js-data-table")
         thead
             tr
-                +th('Id')
-                +th('Name')
-                +th('Email')
-                +th('Edit')
-                +th('Delete')
+                th(class="mdl-data-table__cell--non-numeric") Id
+                th(class="mdl-data-table__cell--non-numeric") Name
+                th(class="mdl-data-table__cell--non-numeric") Email
+                th(class="mdl-data-table__cell--non-numeric") Edit
+                th(class="mdl-data-table__cell--non-numeric") Delete
         tbody
             each val, i in users
                 tr
-                    +td(val.id, 'id')
-                    +td(val.name)
-                    +td(val.email)
-                    +td()
+                    td(class="id mdl-data-table__cell--non-numeric") #{val.id}
+                    td(class="mdl-data-table__cell--non-numeric") #{val.name}
+                    td(class="mdl-data-table__cell--non-numeric") #{val.email}
+                    td(class="mdl-data-table__cell--non-numeric")
                         button(class="edit mdl-button mdl-js-button mdl-button--icon") 
                             div(id="modify_user"+i class="icon material-icons") edit
                             div(class="mdl-tooltip" data-mdl-for="modify_user"+i) edit
-                    +td()
+                    td(class="mdl-data-table__cell--non-numeric")
                         button(class="delete mdl-button mdl-js-button mdl-button--icon") 
                             div(id="delete_user"+i class="icon material-icons") delete
                             div(class="mdl-tooltip" data-mdl-for="delete_user"+i) delete
