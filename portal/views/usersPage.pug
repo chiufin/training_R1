@@ -9,7 +9,7 @@ block content
   include components/updateUserModal.pug
   div(id="users" class="page")
     h1 User list
-    +grayBtn('createUser', 'Create User')
+    +grayBtn('createUser', 'Create User', 'createUser')
     br
     table(class="mdl-data-table mdl-js-data-table")
         thead
@@ -26,7 +26,7 @@ block content
                     td(class="mdl-data-table__cell--non-numeric") #{val.name}
                     td(class="mdl-data-table__cell--non-numeric") #{val.email}
                     td(class="mdl-data-table__cell--non-numeric")
-                        button(class="edit mdl-button mdl-js-button mdl-button--icon") 
+                        button(class="open-modal user-edit mdl-button mdl-js-button mdl-button--icon" data-modal='editUser') 
                             div(id="modify_user"+i class="icon material-icons") edit
                             div(class="mdl-tooltip" data-mdl-for="modify_user"+i) edit
                     td(class="mdl-data-table__cell--non-numeric")

@@ -23,10 +23,7 @@ $( document ).ready(function() {
     })
 
 
-    //modal
-    $("#createUser").click(function() {
-        $("#createUserModal").css({ display: 'block' })
-    });
+    
 
     $("#createUserModal").find('.modal__close').click(function() {
         $("#createUserModal").css({ display: 'none' })

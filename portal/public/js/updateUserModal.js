@@ -1,25 +1,4 @@
 $( document ).ready(function() {
-    //modal
-    $("#users .edit").click(function() {
-        $("#updateUserModal").css({ display: 'block' })
-        var index = $("#users .edit").index(this)
-        var id =  $('.id')[index].textContent;
-        var payload = { id }
-        var callback = function( res ) {
-            if(res.updated_time){
-                $(".time").text(`Updated Time: ${changeToTaipeiTime(res.updated_time)}`)
-            }else{
-                $(".time").text(`Created Time: ${changeToTaipeiTime(res.created_time)}`)
-            }
-
-            $("#updateUserModal").find('.dirty-input').addClass('is-dirty')
-            $("#update_user_id").val(res.id)
-            $("#update_user_name").val(res.name)
-            $("#update_user_email").val(res.email)
-        }
-        api.getUser(payload, callback)
-    });
-
 
     $("#updateUserModal").find(".submit").click(function() {
         if($("#update_user_password")[0].value !== $("#update_user_password_confirm")[0].value){
