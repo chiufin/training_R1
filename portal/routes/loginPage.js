@@ -18,7 +18,7 @@ router.post('/', function(req, res, next){
   })
   .catch(function (error) {
     console.warn(error);
-    res.json({login: false})
+    res.status(error.response.status).json(error.response.data)
   });
 })
 

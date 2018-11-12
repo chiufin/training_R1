@@ -32,8 +32,10 @@ router.post('/login', [
       if(result.length > 0 && result[0].psw == md5(req.body.psw)){
           response.sessionName = result[0].name 
           response.login = true;
+          res.json(response);
+      }else{
+        res.status(401).json(response);
       }
-      res.json(response);
     });
   }catch(err){
     console.err(err);
