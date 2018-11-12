@@ -14,7 +14,7 @@ router.post('/', function(req, res, next){
   axios.post('http://localhost:3000/api/login', req.body)
   .then(function (response) {
     req.session.name = response.data.sessionName
-    res.json({login: true})
+    res.json(response.data)
   })
   .catch(function (error) {
     console.warn(error);

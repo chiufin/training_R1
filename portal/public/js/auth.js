@@ -6,12 +6,8 @@ $( document ).ready(function() {
                 psw: $("#password")[0].value
             }
         }
-        var successCallback = function( msg ) {
-            if(msg.login == true){
-                window.location = '/users'
-            }else{
-                $("#loginPage").find(".error-msg").css({ visibility: 'visible' })
-            }
+        var successCallback = function() {
+            window.location = '/users'   
         }
 
         var errorCallback = function(){
