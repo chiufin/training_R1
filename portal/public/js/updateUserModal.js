@@ -28,10 +28,14 @@ $( document ).ready(function() {
     });
 
 
-
-    $("#updateUserModal").find('.modal__close').click(function() {
-        $("#updateUserModal").css({ display: 'none' })
+    $('.modal__close').click(function(){
+        console.log($('.modal'))
+        console.log($(this).data('modal-close'))
     });
+
+    // $("#updateUserModal").find('.modal__close').click(function() {
+    //     $("#updateUserModal").css({ display: 'none' })
+    // });
 
     //focus and clear error msg
     $("#updateUserModal").find("input").focus(function() {

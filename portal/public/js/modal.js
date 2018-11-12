@@ -2,7 +2,7 @@ $( document ).ready(function() {
 
     //open modal by clicking btn
     $(".open-modal").click(function() {
-        switch($(this).data('modal')){
+        switch($(this).data('open-modal')){
             case 'createUser':
                 $("#createUserModal").css({ display: 'block' })
                 break;

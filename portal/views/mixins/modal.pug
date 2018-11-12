@@ -1,7 +1,7 @@
-mixin modal(mainID='createUserModal', mainTitle='Create User')
-    div(id=mainID class="modal")
+mixin modal(mainID='createUserModal', mainTitle='Create User', data)
+    div(id=mainID class="modal" data-modal=data)
         div(class='modal__content')
             h1=mainTitle 
                 block 
-            button(class="modal__close mdl-button mdl-js-button mdl-button--icon") 
+            button(class="modal__close mdl-button mdl-js-button mdl-button--icon" data-modal-close=data) 
                 i(class="material-icons") clear

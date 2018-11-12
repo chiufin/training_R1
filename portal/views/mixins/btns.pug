@@ -3,7 +3,7 @@ mixin coloredBtn(name='Create', certainClass='submit')
         button(class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" class=certainClass) #{name} 
 
 mixin grayBtn(id, content, data)
-    button(id=id class="open-modal mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-modal=data) #{content}
+    button(id=id class="open-modal mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-open-modal=data) #{content}
 
 mixin iconBtn(certainClass, id, icon, label)
     button(class="logout mdl-button mdl-js-button mdl-button--icon" class=certainClass) 

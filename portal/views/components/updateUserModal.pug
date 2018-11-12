@@ -2,7 +2,7 @@ include ../mixins/modal.pug
 include ../mixins/input.pug
 include ../mixins/btns.pug
 
-+modal('updateUserModal', 'Update User')
++modal('updateUserModal', 'Update User', 'updateUser')
     p(class="time")
     +dirtyInput('update_user_id', 'input', 'Id')
     +dirtyInput('update_user_name', 'input', 'Name')
