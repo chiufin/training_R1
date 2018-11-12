@@ -26,14 +26,14 @@ router.post('/login', [
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
   }
-  var response = { login: false };
+  var response = { login: false, sessionName: undefined };
   try{
     connection.query(`SELECT * FROM user WHERE email="${req.body.account}"`, function(err, result, fields) {
       if(result.length > 0 && result[0].psw == md5(req.body.psw)){
-          req.session.name = result[0].name
+          response.sessionName = result[0].name 
           response.login = true;
       }
-      res.status(401).json(response);
+      res.json(response);
     });
   }catch(err){
     console.err(err);

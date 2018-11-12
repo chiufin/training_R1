@@ -2,7 +2,7 @@ var api = {
     login: function(payload, successCallback, errorCallback){
         $.ajax({
             type: "POST",
-            url: `api/login`,
+            url: `login`,
             data: payload.body,
             success: successCallback,
             error: errorCallback
