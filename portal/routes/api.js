@@ -6,6 +6,21 @@ const md5 = require("blueimp-md5");
 const path = require('path');
 const fs = require('fs');
 const multer  = require('multer')
+const AWS = require('aws-sdk');
+
+function uploadToS3() {
+  let s3bucket = new AWS.S3({
+    accessKeyId: process.env.IAM_USER_KEY,
+    secretAccessKey: process.env.IAM_USER_SECRET
+  });
+  var params = { Bucket: 'stacy-upload-file', Key: 'helloWorld.txt', Body: 'Hello World!'};
+  s3bucket.putObject(params, function(err, data) {
+      if (err)
+        console.log(err)
+      else
+        console.log("Successfully");
+  });
+}
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -136,5 +151,12 @@ router.delete('/deleteFile/:file(*)',(req, res) => {
     res.json({ message: `Successfully deleted file` });
   }); 
 });
+
+//create s3 bucket
+router.post('/createBucket',(req, res) => {
+  uploadToS3()
+  res.json({ message: `Successfully created s3 bucket` });
+});
+
 
 module.exports = router;

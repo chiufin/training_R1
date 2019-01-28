@@ -1,5 +1,15 @@
 $( document ).ready(function() {
 
+    //test create a bucket
+    $("#filePage .create-bucket").click(function() {
+       
+        var callback = function() {
+           console.log('create a bucket successfully')
+        }
+        api.createBucket(callback)
+    });
+
+
     //delete file
     $("#filePage .delete").click(function() {
         var index = $("#filePage .delete").index(this)

@@ -85,5 +85,12 @@ var api = {
             url: `api/deleteFile/${encodeURI(payload)}`
         })
         .done(callback);
+    },
+    createBucket: function(callback){
+        $.ajax({
+            type: "POST",
+            url: `api/createBucket`
+        })
+        .done(callback);
     }
 }
