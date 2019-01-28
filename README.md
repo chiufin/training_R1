@@ -3,10 +3,10 @@
 ## Getting Started in development
 
 ```
+sh start-mysql.sh
+
 cd portal
 npm run dev (/stg/prod)
-
-sh start-mysql.sh
 ```
 
 ## Setting ENV
