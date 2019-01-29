@@ -8,27 +8,7 @@ const fs = require('fs');
 const multer  = require('multer')
 const AWS = require('aws-sdk');
 
-// two ways to use aws crediential
-// 1. from .env
-// 2. from ~/.aws/credentials
-
-function uploadToS3() {
-  let s3bucket = new AWS.S3({
-    accessKeyId: process.env.IAM_USER_KEY,
-    secretAccessKey: process.env.IAM_USER_SECRET
-  });
-  var params = { Bucket: 'stacy-upload-file', Key: 'helloWorld.txt', Body: 'Hello World!'};
-  s3bucket.putObject(params, function(err, data) {
-    if (err)
-      console.log(err)
-    else
-      console.log("Successfully");
-      console.log(data); 
-  });
-}
-
 const storage = multer.memoryStorage()
-
 const upload = multer({ storage: storage })
 
 //click signIn button
@@ -130,6 +110,10 @@ router.delete('/users/(:id)', function(req, res){
 
 //upload file
 router.post('/uploadFile', upload.single('filetoupload'), function (req, res, next) {
+  // two ways to use aws crediential
+  // 1. from .env
+  // 2. from ~/.aws/credentials
+  
   let s3bucket = new AWS.S3({
     accessKeyId: process.env.IAM_USER_KEY,
     secretAccessKey: process.env.IAM_USER_SECRET
@@ -160,12 +144,6 @@ router.delete('/deleteFile/:file(*)',(req, res) => {
     if (err) throw err;
     res.json({ message: `Successfully deleted file` });
   }); 
-});
-
-//create s3 bucket
-router.post('/createBucket',(req, res) => {
-  uploadToS3()
-  res.json({ message: `Successfully created s3 bucket` });
 });
 
 

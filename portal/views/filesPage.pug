@@ -5,12 +5,9 @@ block content
 
   div(id="filePage" class="page")
     h1 File List
-    div
-      button(class="create-bucket") CreateBucket
     form(class="upload")
       input(type="file" name="filetoupload" )
       input(type="submit")
-
     if files.length <= 0 
       p No Files
     else
