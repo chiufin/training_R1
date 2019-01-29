@@ -8,6 +8,10 @@ const fs = require('fs');
 const multer  = require('multer')
 const AWS = require('aws-sdk');
 
+// two ways to use aws crediential
+// 1. from .env
+// 2. from ~/.aws/credentials
+
 function uploadToS3() {
   let s3bucket = new AWS.S3({
     accessKeyId: process.env.IAM_USER_KEY,
@@ -15,21 +19,15 @@ function uploadToS3() {
   });
   var params = { Bucket: 'stacy-upload-file', Key: 'helloWorld.txt', Body: 'Hello World!'};
   s3bucket.putObject(params, function(err, data) {
-      if (err)
-        console.log(err)
-      else
-        console.log("Successfully");
+    if (err)
+      console.log(err)
+    else
+      console.log("Successfully");
+      console.log(data); 
   });
 }
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/')
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  }
-})
+const storage = multer.memoryStorage()
 
 const upload = multer({ storage: storage })
 
@@ -132,6 +130,18 @@ router.delete('/users/(:id)', function(req, res){
 
 //upload file
 router.post('/uploadFile', upload.single('filetoupload'), function (req, res, next) {
+  let s3bucket = new AWS.S3({
+    accessKeyId: process.env.IAM_USER_KEY,
+    secretAccessKey: process.env.IAM_USER_SECRET
+  });
+  var params = { Bucket: 'stacy-upload-file', Key: req.file.originalname, Body: req.file.buffer};
+  s3bucket.putObject(params, function(err, data) {
+    if (err)
+      console.log(err)
+    else
+      console.log("Successfully");
+      console.log(data); 
+  });
   res.json({ message: `Successfully update file` });
 })
 
