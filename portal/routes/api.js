@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const connection = require('../db.js').connection;
+const connection = require('../config/db.js').connection;
 const { check, validationResult } = require('express-validator/check');
 const md5 = require("blueimp-md5");
 const path = require('path');
 const fs = require('fs');
 const multer  = require('multer')
-const AWS = require('aws-sdk');
+const s3bucket = require('../config/s3.config.js');
 
 const storage = multer.memoryStorage()
 const upload = multer({ storage: storage })
@@ -110,15 +110,8 @@ router.delete('/users/(:id)', function(req, res){
 
 //upload file
 router.post('/uploadFile', upload.single('filetoupload'), function (req, res, next) {
-  // two ways to use aws crediential
-  // 1. from .env
-  // 2. from ~/.aws/credentials
-  
-  let s3bucket = new AWS.S3({
-    accessKeyId: process.env.IAM_USER_KEY,
-    secretAccessKey: process.env.IAM_USER_SECRET
-  });
   var params = { Bucket: 'stacy-upload-file', Key: req.file.originalname, Body: req.file.buffer};
+
   s3bucket.putObject(params, function(err, data) {
     if (err)
       console.log(err)

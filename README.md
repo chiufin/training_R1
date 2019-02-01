@@ -24,6 +24,9 @@ PROD_DB=staging.example.host
 DB_USER=root
 DB_PASSWORD=password
 
+IAM_USER_KEY=
+IAM_USER_SECRET=
+
 ```
 0. Default Setting
 

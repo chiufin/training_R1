@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var connection = require('../db.js').connection;
+var connection = require('../config/db.js').connection;
 
 router.get('/', function(req, res, next) {
   if(req.session.name){
