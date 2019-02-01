@@ -20,7 +20,7 @@ block content
         tbody
           each val, i in files
             tr
-              td(class="file_name mdl-data-table__cell--non-numeric") #{val}
+              td(class="file_name mdl-data-table__cell--non-numeric") #{val.Key}
               td(class="mdl-data-table__cell--non-numeric") 
                 button(class="download mdl-button mdl-js-button mdl-button--icon") 
                   div(id="download_file"+i class="icon material-icons") cloud_download
