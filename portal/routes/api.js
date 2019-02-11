@@ -133,10 +133,16 @@ router.get('/download/:file(*)',(req, res) => {
 
 //delete certain file
 router.delete('/deleteFile/:file(*)',(req, res) => {
-  fs.unlink(`./uploads/${req.params.file}`, function (err) {
-    if (err) throw err;
-    res.json({ message: `Successfully deleted file` });
-  }); 
+  var params = { Bucket: 'stacy-upload-file',Key: req.params.file};
+  s3bucket.deleteObject(params, function(err, data) {
+    if (err) {
+       console.log("Error", err);
+       res.json({ message: `Failed deleted ${req.params.file}` });
+    } else {
+      console.log("Success", data);  
+      res.json({ message: `Successfully deleted ${req.params.file}` });
+    }
+ });
 });
 
 

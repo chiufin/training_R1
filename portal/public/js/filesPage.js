@@ -15,6 +15,7 @@ $( document ).ready(function() {
         var index = $("#filePage .delete").index(this)
         var payload = $("#filePage .file_name")[index].textContent
         var callback = function() {
+            console.log('delete file')
             window.location = '/files'
         }
         api.deleteFile(payload, callback)
